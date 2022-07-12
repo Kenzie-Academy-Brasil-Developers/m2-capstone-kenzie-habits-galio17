@@ -35,4 +35,55 @@
     --text-3-400: 400; 
     --text-4-500: 500; 
 
+
+}
+
+/*Modal*/
+.modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.65)
+}
+.modal > .container{
+    width: 31.375rem;
+    height: max-content;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.modal__inner{
+    background-color: rgba(255,255,255,1);
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding: 2rem;
+    Gap: 2rem;
+}
+.modal__titulo{
+    font-size: 1.25rem;
+    line-height: 1.5125rem;
+    width: 90%;
+    height: 1.5rem;
+    color: rgba(33,37,41,1);
+}
+.modal__botaoFechar{
+    width: max-content;
+    height: max-content;
+    position: absolute;
+    cursor: pointer;
+    border-style: none;
+    background-color: transparent;
+    z-index: 2;
 }
