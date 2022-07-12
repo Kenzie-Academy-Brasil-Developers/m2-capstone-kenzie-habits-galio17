@@ -51,7 +51,6 @@ export default class Dom {
             novoInput.type = dado.type;
             novoInput.name = dado.name;
             novoInput.id = dado.name;
-            novoInput.placeholder = dado.placeholder;
 
             form.append(novoLabel, novoInput);
         });
@@ -59,13 +58,13 @@ export default class Dom {
         if(temCategorias) {
             const categoriaSelect = document.createElement('select');
 
-            categoriaSelect.innerHTML = `
+            categoriaSelect.insertAdjacentHTML('afterbegin', `
                 <option value="casa">Casa</option>
                 <option value="estudo">Estudo</option>
                 <option value="lazer">Lazer</option>
                 <option value="trabalho">Trabalho</option>
                 <option value="saude">Saúde</option>
-            `;
+            `);
 
             form.append(categoriaSelect);
         }
