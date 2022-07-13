@@ -136,6 +136,7 @@ export default class UserPage {
         const modal = document.createElement("div")
         const container = document.createElement("div")
         const modalInner = document.createElement("div")
+        const modalHeader = document.createElement('div')
         const modalTitulo = document.createElement("h2")
         const botaoFechar = document.createElement("button")
         const figure = document.createElement("figure")
@@ -146,15 +147,15 @@ export default class UserPage {
         modalInner.classList.add("modal__inner")
         modalTitulo.classList.add("modal__titulo")
         botaoFechar.classList.add("modal__botaoFechar")
+        modalHeader.classList.add("modal__header")
 
         botaoFechar.type = "button"
-        imagem.src = "../../src/assets/img/X.png"
-        imagem.alt = "Fechar"
 
         figure.appendChild(imagem)
         botaoFechar.appendChild(figure)
-        modalInner.append(modalTitulo)
-        container.append(modalInner, botaoFechar)
+        modalInner.append(modalHeader)
+        modalHeader.append(modalTitulo, botaoFechar)
+        container.append(modalInner)
         modal.appendChild(container)
         body.appendChild(modal)
 
@@ -169,6 +170,7 @@ export default class UserPage {
 
         botaoEnviar.type = 'submit'
         botaoEnviar.innerText = 'Salvar Alterações'
+        botaoEnviar.classList.add('botao')
 
         console.log(localStorage.getItem('@kenzie-habits:user_img'))
 
