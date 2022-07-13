@@ -8,7 +8,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
-figure, figcaption, menu, section, button {
+figure, figcaption, menu, section, button, input, textarea {
 	margin: 0;
 	padding: 0;
 	border: 0;

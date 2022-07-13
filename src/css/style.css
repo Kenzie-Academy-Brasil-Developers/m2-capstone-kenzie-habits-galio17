@@ -122,22 +122,25 @@ input:focus, textarea:focus {
 
 /*Modal*/
 .modal{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    min-height: 100vh;
+    height: max-content;
     width: 100vw;
-    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
-    z-index: 1;
     left: 0;
     top: 0;
-    background-color: rgba(0, 0, 0, 0.5)
+    z-index: 1;
 }
 
 .modal .container{
     width: 31.375rem;
-    height: max-content;
     max-width: 95%;
+    height: max-content;
+    max-height: 95vh;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -145,15 +148,21 @@ input:focus, textarea:focus {
 
 .modal__inner{
     background-color: var(--grey-6);
-    padding: 32px;
+    padding: 20px;
     border-radius: 8px;
     width: 100%;
-    overflow: hidden;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: 15px;
+}
+
+.modal__cabecalho {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .modal__titulo{
@@ -169,14 +178,11 @@ input:focus, textarea:focus {
     background-image: url(../assets/img/X.svg);
     background-repeat: no-repeat;
     background-position: center;
-    margin: 32px;
     width: 2rem;
     height: 2rem;
-    position: absolute;
     cursor: pointer;
     border-style: none;
     background-color: transparent;
-    z-index: 2;
 }
 
 .modal--sucesso {
@@ -218,6 +224,6 @@ input:focus, textarea:focus {
     height: 59px;
 }
 
-.modal--close {
-    display: none;
+.fechar {
+    display: none!important;
 }
