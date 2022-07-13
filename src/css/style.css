@@ -35,6 +35,7 @@
     --text-3-400: 400; 
     --text-4-500: 500; 
 
+
 }
 
 /*Modal*/
@@ -86,4 +87,3 @@
     background-color: transparent;
     z-index: 2;
 }
-
