@@ -46,6 +46,7 @@ body{
 }
 
 aside{
+   height: 0px;
    visibility: hidden;
    display: flex;
    justify-content: center;
@@ -197,6 +198,7 @@ input:invalid{
     }
 
     aside{
+        height: 100%;
         visibility: visible;
         flex-direction: column;
         background-color: var(--button-input);
