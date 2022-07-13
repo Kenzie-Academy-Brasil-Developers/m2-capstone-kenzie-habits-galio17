@@ -10,4 +10,7 @@ let form = Dom.createForm("Enviar", [
 ])
 let elemento = document.createElement("h1")
 elemento.innerText = "Oi"
+
 Dom.modal(form, "Criar Hábito")
+
+

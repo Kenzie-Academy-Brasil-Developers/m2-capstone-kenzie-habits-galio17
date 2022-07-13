@@ -31,6 +31,61 @@
     color:  var(--brand-1);
 }
 
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown:hover .dropdown_content{
+    display: block;
+}
+
+.dropdown_content{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    min-height: 50px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.editarPerfil{
+    width: 90px;
+    height: 32px;
+    font-family: var(--main-font);
+    background-color: var(--white);
+    color: var(--grey-1);
+    font-weight: bold;
+    border-radius: 4px;
+    border: none
+}
+
+.editarPerfil:hover{
+    background-color: var(--brand-1);
+    color: var(--grey-4);
+    transition: 144ms;
+}
+
+.sair{
+    width: 90px;
+    height: 32px;
+    font-family: var(--main-font);
+    background-color: var(--white);
+    color: var(--grey-1);
+    font-weight: bold;
+    border-radius: 4px;
+    border: none
+}
+
+.sair:hover{
+    background-color: var(--brand-1);
+    color: var(--grey-4);
+    transition: 144ms;
+}
+
 .fotoPerfilUm{
     width: 40px;
     height: 40px;

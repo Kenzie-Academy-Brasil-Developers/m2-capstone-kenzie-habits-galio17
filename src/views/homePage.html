@@ -15,7 +15,13 @@
     <header class="header">
         <div class="headerUm">
             <h1 class="tituloSite">KenzieHabit</h1>
-            <figure><img src="../temp/imgsTemporarias/unnamed.jpg" alt="fotoPerfil" class="fotoPerfilUm"></figure>
+            <div class="dropdown">
+                <figure><img src="../temp/imgsTemporarias/unnamed.jpg" alt="fotoPerfil" class="fotoPerfilUm"></figure>
+                <div class="dropdown_content">
+                    <button class="editarPerfil">Editar Perfil</button>
+                    <button class="sair">Sair</button>
+                </div>
+            </div>   
         </div>
         <div class="headerDois">
             <div>
@@ -52,7 +58,7 @@
                         <td class="atividadePlanejada">Fazer exercícios segunda pela manhâ</td>
                         <td class="descricapDetalhada">Ir correr na praça próxima a minha casa</td>
                         <td class="tdCategoria"><span class="categoriaDetalhada">Saúde</span></td>
-                        <td class="CaixaBotaoEditar"><button class="editarHabito">...</button></td>
+                        <td class="CaixaBotaoEditar"><button id="but" class="editarHabito">...</button></td>
                     </tr>
 
                     <tr  class="caixaHabits">
@@ -60,7 +66,7 @@
                         <td class="atividadePlanejada">Fazer exercícios segunda pela manhâ</td>
                         <td class="descricapDetalhada">Ir correr na praça próxima a minha casa</td>
                         <td class="tdCategoria"><span class="categoriaDetalhada">Saúde</span></td>
-                        <td class="CaixaBotaoEditar"><button class="editarHabito">...</button></td>
+                        <td class="CaixaBotaoEditar"><button id="butDois" class="editarHabito">...</button></td>
                     </tr>
 
                     <tr  class="caixaHabits">
@@ -85,6 +91,7 @@
         </section>
     </main>
 
-     
+
+    <script type="module" src="../scripts/homePage.script.js"></script>
 </body>
 </html>
