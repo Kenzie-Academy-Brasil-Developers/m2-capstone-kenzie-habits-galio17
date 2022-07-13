@@ -1,32 +1,33 @@
 import { Login } from "./login.controller.js"
 
-export default class PaginaLogin{
+export default class PaginaLogin {
 
-    static login(){
+    static login() {
+    
+    // constroi botão de login
+        const botaoLogin = document.createElement("button")
+        botaoLogin.innerText = "Entrar"
+        botaoLogin.type = "button"
 
+    // adiciona listener click e passa arrow function
+        botaoLogin.addEventListener("click", async event => {
+            event.preventDefault()
 
-    const botaoLogin = document.createElement("button")
-    botaoLogin.innerText = "Entrar"
-    botaoLogin.type = "button"
+            const data = {}
+            const formBotaoLogin = [...event.target.form]
+            console.log(formBotaoLogin)
+            formBotaoLogin.forEach(elem => {
+                if (elem.value !== "") {
+                    data[elem.name] = elem.value
+                }
+            })
+            console.log(data)
+            await Login.logar(data)
 
-    botaoLogin.addEventListener("click", async event => {
-        event.preventDefault()
-        
-        const data = {}
-        const formBotaoLogin = [...event.target.form]
-        console.log(formBotaoLogin)
-        formBotaoLogin.forEach(elem => {
-            if(elem.value !== ""){
-                data[elem.name] = elem.value
-            }
+            //window.location.replace()
         })
-        console.log(data)
-        await Login.logar(data)
-        
-        //window.location.replace()
-    })
 
-    const section = document.querySelector(".container")
-    section.append(botaoLogin)
+        const section = document.querySelector(".container")
+        section.append(botaoLogin)
     }
 }
