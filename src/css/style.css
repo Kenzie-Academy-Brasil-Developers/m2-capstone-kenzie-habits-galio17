@@ -18,6 +18,10 @@
     --error-1: #E64445;
     --error-2: #F03839;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> fd7b9ab73dfa5713ffc74a2a7baf444d85085012
     /*Tipografia*/
     --font-inter: 'Inter', sans-serif;
     --title-1: 600 2.5rem var(--font-inter);
@@ -245,6 +249,13 @@ form .botao {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+}
+
+.modal__header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 37px;
 }
 
 .modal__inner{
