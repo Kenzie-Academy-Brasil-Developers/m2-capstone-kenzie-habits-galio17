@@ -22,3 +22,6 @@ elemento.innerText = "Oi"
 UserPage.modal(form, "Criar Hábito"); */
 
 UserPage.criarFormHabito(true)
+Dom.modal(form, "Criar Hábito")
+
+
