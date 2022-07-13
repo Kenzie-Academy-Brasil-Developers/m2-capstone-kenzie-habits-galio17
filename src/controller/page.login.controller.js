@@ -34,6 +34,7 @@ export default class PaginaLogin {
         botaoLogin.addEventListener("click", async (event) => {
             event.preventDefault()
 
+            const form = document.querySelector(form)
             const data = {}
             const formBotaoLogin = [...event.target.form]
             formBotaoLogin.forEach(elem => {
@@ -61,9 +62,11 @@ export default class PaginaLogin {
             }
         })
         
+        const container = document.querySelector(".container")
         const divErro = document.querySelector("div")
         const form = document.querySelector("form")
-        form.append(labelUsuario, usuarioInput, divErro, labelSenha, senhaInput, botaoLogin)
+        form.append(labelUsuario, usuarioInput, divErro, labelSenha, senhaInput)
+        container.append(botaoLogin)
         
     }
 }
