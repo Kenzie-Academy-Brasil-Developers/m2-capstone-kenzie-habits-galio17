@@ -67,19 +67,19 @@ export default class UserPage extends Dom{
         habitoTitulo.type = 'text'
         habitoTitulo.name = 'habit_title';
         habitoTitulo.id = 'habit_title';
-        habitoTitulo.insertAdjacentHTML('beforebegin', `
+        habitoTitulo.insertAdjacentHTML('beforebegin',`
             <label for="habit_title">Título</label>
         `);
 
         habitoDescricao.name = 'habit_description';
         habitoDescricao.id = 'habit_description';
         habitoDescricao.insertAdjacentHTML('beforebegin', `
-        <label for="habit_description">Título</label>
+        <label for="habit_description">Descrição</label>
         `);
 
         habitoCategoria.classList.add('customSelect');
         habitoCategoria.insertAdjacentHTML('beforebegin', `
-            <label for="habit_category">Título</label>
+            <label for="habit_category">Categoria</label>
         `);
         habitoCategoria.insertAdjacentHTML('afterbegin', `
             <div class="customSelect__inner">
@@ -96,6 +96,7 @@ export default class UserPage extends Dom{
 
         habitoBotoes.append(habitoBotaoEnvio);
         habitoBotaoEnvio.innerText = 'Inserir';
+        habitoBotaoEnvio.classList.add("botao--envio")
 
         if(edicao) {
             form.classList.add('formulario--editarHabito');
