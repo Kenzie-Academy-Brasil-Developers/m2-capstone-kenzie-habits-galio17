@@ -64,7 +64,7 @@ export default class UserPage {
         tituloEBotoes.append(titulo, organizacaoBotoes)
         body.appendChild(tituloEBotoes)
     }
-    static vitrine(){
+    static vitrine(statusP, atividadeP, descricaoP, categoriaP){
         const body = document.querySelector("body")
         const secaoTabela = document.createElement("section")
         const tabela = document.createElement("table")
@@ -79,12 +79,13 @@ export default class UserPage {
         const tbody = document.createElement("tbody")
         const caixaHabits = document.createElement("tr")
         const checkout = document.createElement("td")
+        const input = document.createElement("input")
         const atividadePlanejada = document.createElement("td")
         const descricapDetalhada = document.createElement("td")
         const categoriaDetalhada = document.createElement("span")
         const tdCategoria = document.createElement("td")
         const CaixaBotaoEditar = document.createElement("td")
-        const editarHabito = document.createElement("td")
+        const editarHabito = document.createElement("button")
 
         secaoTabela.classList.add("secaoTabela")
         tabela.classList.add("tabela")
@@ -97,6 +98,7 @@ export default class UserPage {
 
         caixaHabits.classList.add("caixaHabits")
         checkout.classList.add("checkout")
+        input.classList.add("input")
         atividadePlanejada.classList.add("atividadePlanejada")
         descricapDetalhada.classList.add("descricapDetalhada")
         tdCategoria.classList.add("tdCategoria")
@@ -104,19 +106,26 @@ export default class UserPage {
         CaixaBotaoEditar.classList.add("CaixaBotaoEditar")
         editarHabito.classList.add("editarHabito")
 
+        input.type = "checkbox"
         status.innerText = "Status"
         tituloTabela.innerText = "Título"
         descricao.innerText = "Descrição"
         categoria.innerText = "Categoria"
         editar.innerText = "Editar"
-
-        checkout.type = "chechbox"
-        atividadePlanejada.innerText = "Fazer exercícios segunda pela manhâ"
-        descricapDetalhada.innerText = "Ir correr na praça próxima a minha casa"
-        tdCategoria.innerText = "Saúde"
-        CaixaBotaoEditar.innerText = "..."
         
+        checkout.type = "chechbox"
+        checkout.checked = statusP 
+        atividadePlanejada.innerText = atividadeP
+        descricapDetalhada.innerText = descricaoP
+        if(categoriaP === "Saude"){
+            categoriaP = "Saúde"
+        }
+        categoriaDetalhada.innerText = categoriaP
+        editarHabito.innerText = "..."
+
+        CaixaBotaoEditar.appendChild(editarHabito)
         tdCategoria.appendChild(categoriaDetalhada)
+        checkout.appendChild(input)
         caixaHabits.append(checkout, atividadePlanejada, descricapDetalhada, tdCategoria, CaixaBotaoEditar)
         tbody.appendChild(caixaHabits)
         caixaOrganizacao.append(status, tituloTabela, descricao, categoria, editar)
