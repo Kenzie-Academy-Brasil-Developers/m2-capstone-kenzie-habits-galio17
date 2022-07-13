@@ -1,4 +1,6 @@
-export default class UserPage {
+import Dom from "../models/dom.model.js"
+
+export default class UserPage extends Dom{
     static header(title){
         const body = document.querySelector("body")
         const header = document.createElement("header")
@@ -133,5 +135,69 @@ export default class UserPage {
         tabela.append(tituloMain, tbody)
         secaoTabela.appendChild(tabela)
         body.appendChild(secaoTabela)
+    }
+
+    static criarFormHabito(edicao) {
+        const form = document.createElement('form');
+
+        const habitoTitulo = document.createElement('input');
+        const habitoDescricao = document.createElement('textarea');
+        const habitoCategoria = document.createElement('div');
+        const habitoStatus = document.createElement('div');
+        const habitoBotoes = document.createElement('div');
+        const habitoBotaoEnvio = document.createElement('button');
+
+        form.append(habitoTitulo, habitoDescricao, habitoCategoria, habitoBotoes);
+        
+        habitoTitulo.type = 'text'
+        habitoTitulo.name = 'habit_title';
+        habitoTitulo.id = 'habit_title';
+        habitoTitulo.insertAdjacentHTML('beforebegin', `
+            <label for="habit_title">Título</label>
+        `);
+
+        habitoDescricao.name = 'habit_description';
+        habitoDescricao.id = 'habit_description';
+        habitoDescricao.insertAdjacentHTML('beforebegin', `
+        <label for="habit_description">Título</label>
+        `);
+
+        habitoCategoria.classList.add('customSelect');
+        habitoCategoria.insertAdjacentHTML('beforebegin', `
+            <label for="habit_category">Título</label>
+        `);
+        habitoCategoria.insertAdjacentHTML('afterbegin', `
+            <div class="customSelect__inner">
+                <button class="customSelect__select" name="habit_category" id="habit_category">Selecionar categoria</button>
+                <div class="customSelect__customOptions customOptions fechado">
+                    <button class="customOptions__option customOptions__option--casa" value="casa">Casa</button>
+                    <button class="customOptions__option customOptions__option--estudo" value="estudo">Estudo</button>
+                    <button class="customOptions__option customOptions__option--lazer" value="lazer">Lazer</button>
+                    <button class="customOptions__option customOptions__option--trabalho" value="trabalho">Trabalho</button>
+                    <button class="customOptions__option customOptions__option--saude" value="saude">Saúde</button>
+                </div>
+            </div>
+        `);
+
+        habitoBotoes.append(habitoBotaoEnvio);
+        habitoBotaoEnvio.innerText = 'Inserir';
+
+        if(edicao) {
+            form.classList.add('formulario--editarHabito');
+
+            habitoBotaoEnvio.innerText = 'Salvar alterações';
+            habitoBotoes.insertAdjacentHTML('afterbegin', `
+                <button>Excluir</button>
+            `);
+            habitoBotoes.insertAdjacentElement('beforebegin', habitoStatus)
+
+            habitoStatus.insertAdjacentHTML('afterbegin', `
+                <label for="habit_status">Status</label>
+                <input type="checkbox" name="habit_status" id="habit_status">
+            `);
+
+            this.modal(form, 'Editar hábito');
+        }
+        else this.modal(form, 'Criar hábito');
     }
 }
