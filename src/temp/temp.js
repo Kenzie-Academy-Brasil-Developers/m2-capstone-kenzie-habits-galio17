@@ -31,7 +31,7 @@ let userUpdate = {
 // // LOGIN:
 
 // // Login:
-// Login.logar(dataLogin)
+Login.logar(dataLogin)
 
 // HABITS:
 
