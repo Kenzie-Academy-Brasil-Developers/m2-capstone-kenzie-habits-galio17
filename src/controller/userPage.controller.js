@@ -81,8 +81,10 @@ export default class UserPage {
         const checkout = document.createElement("td")
         const atividadePlanejada = document.createElement("td")
         const descricapDetalhada = document.createElement("td")
+        const categoriaDetalhada = document.createElement("span")
         const tdCategoria = document.createElement("td")
         const CaixaBotaoEditar = document.createElement("td")
+        const editarHabito = document.createElement("td")
 
         secaoTabela.classList.add("secaoTabela")
         tabela.classList.add("tabela")
@@ -98,7 +100,9 @@ export default class UserPage {
         atividadePlanejada.classList.add("atividadePlanejada")
         descricapDetalhada.classList.add("descricapDetalhada")
         tdCategoria.classList.add("tdCategoria")
+        categoriaDetalhada.classList.add("categoriaDetalhada")
         CaixaBotaoEditar.classList.add("CaixaBotaoEditar")
+        editarHabito.classList.add("editarHabito")
 
         status.innerText = "Status"
         tituloTabela.innerText = "Título"
@@ -112,6 +116,7 @@ export default class UserPage {
         tdCategoria.innerText = "Saúde"
         CaixaBotaoEditar.innerText = "..."
         
+        tdCategoria.appendChild(categoriaDetalhada)
         caixaHabits.append(checkout, atividadePlanejada, descricapDetalhada, tdCategoria, CaixaBotaoEditar)
         tbody.appendChild(caixaHabits)
         caixaOrganizacao.append(status, tituloTabela, descricao, categoria, editar)
