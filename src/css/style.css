@@ -69,9 +69,6 @@ body {
     opacity: 0.5;
 }
 
-/*Typography*/
-    --fontbase: 'Inter', sans-serif;
-
 .botao--desabilitado:hover {
     background: var(--brand-1);
 }
@@ -253,6 +250,13 @@ form .botao {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+}
+
+.modal__header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 37px;
 }
 
 .modal__inner{
