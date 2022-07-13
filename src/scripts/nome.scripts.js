@@ -3,6 +3,7 @@ import UserPage from "../controller/userPage.controller.js";
 // teste UserPage
 UserPage.header("Júlia Silva Camargo")
 UserPage.menu()
+UserPage.vitrine(true, "fazer exercicios", "ir correr na...", "Saude")
 UserPage.vitrine()
 /* 
 // modelo de parametros formulário
