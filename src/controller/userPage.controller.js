@@ -211,7 +211,7 @@ export default class UserPage extends Dom{
         const modal = document.createElement("div")
         const container = document.createElement("div")
         const modalInner = document.createElement("div")
-        const modalHeader = document.createElement('div')
+        const modalCabecalho = document.createElement('div')
         const modalTitulo = document.createElement("h2")
         const botaoFechar = document.createElement("button")
         const figure = document.createElement("figure")
@@ -222,14 +222,14 @@ export default class UserPage extends Dom{
         modalInner.classList.add("modal__inner")
         modalTitulo.classList.add("modal__titulo")
         botaoFechar.classList.add("modal__botaoFechar")
-        modalHeader.classList.add("modal__header")
+        modalCabecalho.classList.add("modal__cabecalho")
 
         botaoFechar.type = "button"
 
         figure.appendChild(imagem)
         botaoFechar.appendChild(figure)
-        modalInner.append(modalHeader)
-        modalHeader.append(modalTitulo, botaoFechar)
+        modalInner.append(modalCabecalho)
+        modalCabecalho.append(modalTitulo, botaoFechar)
         container.append(modalInner)
         modal.appendChild(container)
         body.appendChild(modal)
