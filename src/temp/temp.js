@@ -60,3 +60,6 @@ Login.logar(dataLogin)
 
 // // Atualizar profile:
 // User.updateProfile(userUpdate)
+
+
+Dom.modal(undefined, "teste", true)
