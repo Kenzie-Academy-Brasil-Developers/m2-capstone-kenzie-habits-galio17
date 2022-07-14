@@ -1,19 +1,4 @@
 :root{
-    /*Brand*/
-    --brand-1: #BC00FF;
-    --brand-2: #540073;
-    --brand-3: #540073;
-    /*Grey*/
-    --grey-1: #212529;
-    --grey-2: #343A40;
-    --grey-3: #DEE2E6;
-    --grey-4: #E9ECEF;
-    --grey-5: #F1F3F5;
-    --grey-5: #FFFFFF;
-    /*Feedback Palette*/
-    --sucess: #56CF8E;
-    --error-1: #E64445;
-    --error-2: #F03839;
     /*Typography*/
     --fonte-base: 'Inter', sans-serif;
     /*Fonts Size*/
