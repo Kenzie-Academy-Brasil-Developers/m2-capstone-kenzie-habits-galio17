@@ -85,4 +85,31 @@ export default class Dom {
 
         return form;
     }
+
+
+    static modelSucessLogin(sucesso){
+
+        const body = document.querySelector("body")
+        const modal = document.createElement("div")
+        const container = document.createElement("div")
+        const modalInner = document.createElement("div")
+        const modalCabecalho = document.createElement("div")
+        const figure = document.createElement("figure")
+        const imagem = document.createElement("img")
+        modal.classList.add("modal")
+        if (sucesso === true){
+            modal.classList.add("modal--sucesso")
+        }
+        container.classList.add("container")
+        modalInner.classList.add("modal__inner")
+        modalCabecalho.classList.add("modal__cabecalho")
+
+
+        figure.append(imagem)
+        modalInner.append(modalCabecalho)
+        container.append(modalInner)
+        modal.append(container)
+        body.append(modal)
+}
+
 }
