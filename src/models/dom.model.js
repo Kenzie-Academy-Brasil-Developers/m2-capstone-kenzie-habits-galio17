@@ -46,11 +46,4 @@ export default class Dom {
             modal.remove()
         })
     }
-
-    static modelSucess(mensagem){
-        const mensagemContainer = document.querySelector("span")
-        mensagemContainer.innerText = mensagem;
-
-        this.modal(mensagemContainer, 'Sucesso', true);
-    }
 }
