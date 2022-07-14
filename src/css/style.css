@@ -43,6 +43,9 @@ body {
     color: var(--grey-6);
     border-radius: 4px;
     padding: 10.5px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font: var(--title-5);
 }
 
@@ -74,6 +77,7 @@ body {
 
 .botao--deletar {
     background-color: var(--error-1);
+    padding: 7.5px 28px;
 }
 
 .botao--deletar:hover {
@@ -209,16 +213,27 @@ form .customOptions__option--saude::before {
     background-image: url(../assets/img/saude.svg);
 }
 
-form .status {
+form .statusForm {
     margin-bottom: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-form .status input {
+form .statusForm input {
     margin: 0px 10px;
     align-items: center;
+}
+
+.botoesContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.botoesContainer .botao--envio, .botoesContainer.botao--deletar {
+    flex: 1;
 }
 
 /*Modal*/
