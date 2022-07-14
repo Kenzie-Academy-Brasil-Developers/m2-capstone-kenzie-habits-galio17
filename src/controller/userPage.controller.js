@@ -114,7 +114,7 @@ export default class UserPage extends Dom{
             habitoBotaoEnvio.classList.add("botao--envio")
             habitoBotaoEnvio.innerText = 'Salvar alterações';
             habitoBotoes.insertAdjacentHTML('afterbegin', `
-                <button class="botao botao--secundario">Excluir</button>
+                <button class="botao botao--secundario botao--confirmarDelete">Excluir</button>
             `);
             habitoBotoes.insertAdjacentElement('beforebegin', habitoStatus)
 
