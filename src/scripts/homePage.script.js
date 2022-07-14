@@ -89,7 +89,7 @@ class HomePage{
         const inserir = e.target
         if(inserir.classList.contains("botao--envio/habito")){
 
-            let novoHabito = HomePage.salvarInformacoes()
+            let novoHabito = HomePage.salvarInformacoes(form)
             
             const modal = event.composedPath()[5];
   
