@@ -27,9 +27,9 @@ class HomePage{
     static selectForm(e){
         e.preventDefault();
         const option = e.target;
+        const categorias = document.querySelector('.customOptions');
         if(option.classList.contains("customOptions__option")){
             const customSelect = e.composedPath()[4].querySelector(".select")
-            const categorias = document.querySelector('.customOptions');
 
             if(customSelect.classList.contains("customOptions__option")){
                 customSelect.className = "select"
@@ -40,9 +40,11 @@ class HomePage{
             customSelect.value = option.value;
             customSelect.innerText = option.innerText;
         }
-        else if(option.classList.contains('customSelect__select')) {
-            const categorias = document.querySelector('.customOptions');
+        else if(option.classList.contains('customSelect__select')
+        || option.classList.contains('select')) {
             categorias.classList.toggle('fechado')
+        } else {
+            if(categorias) categorias.classList.add('fechado')
         }
         
     }
@@ -78,13 +80,20 @@ class HomePage{
                 alert(user.message)
                 
             } else {
+                UserPage.modal('Usuário atualizado', 'Sucesso', true);
                 
                 localStorage.setItem("@kenzie-habits:user_name", user.usr_name)
                 localStorage.setItem("@kenzie-habits:user_img", user.usr_image)
-
+                
                 UserPage.header()
-
+                
                 modal.remove()
+
+                setTimeout(() => {
+                    const modalSucesso = document.querySelector('.modal--sucesso')
+
+                    if(modalSucesso) modalSucesso.remove()
+                }, 3000);
             }
         }
     }
@@ -120,10 +129,17 @@ class HomePage{
             if(habito.message){
                 alert(habito.message)
             } else {
+                UserPage.modal('Hábito salvo', 'Sucesso', true)
 
                 listaDeHabitos = await Habits.ReadAll()
 
                 UserPage.listarVitrine(listaDeHabitos)
+
+                setTimeout(() => {
+                    const modalSucesso = document.querySelector('.modal--sucesso')
+
+                    if(modalSucesso) modalSucesso.remove()
+                }, 3000);
 
                 modal.remove()
             }
@@ -157,10 +173,16 @@ class HomePage{
         if(checkbox.classList.contains('input')) {
             if(e.composedPath()[1].className === 'checkout') this.habitoId = e.composedPath()[2].id
             const habito = await Habits.CompleteHabit(this.habitoId)
-            alert(habito.message);
+            UserPage.modal(habito.message, 'Sucesso', true);
             checkbox.checked = true
             listaDeHabitos = await Habits.ReadAll()
             UserPage.listarVitrine(listaDeHabitos)
+
+            setTimeout(() => {
+                const modalSucesso = document.querySelector('.modal--sucesso')
+
+                if(modalSucesso) modalSucesso.remove()
+            }, 3000);
         }
     }
 
@@ -184,10 +206,16 @@ class HomePage{
         if(botaoDeletar.classList.contains('botao--deletar')){
             e.composedPath()[5].remove()
             const habito = await Habits.DeleteHabit(this.habitoId);
-            alert(habito.message)
+            UserPage.modal(habito.message, 'Sucesso', true)
 
             listaDeHabitos = await Habits.ReadAll()
             UserPage.listarVitrine(listaDeHabitos);
+
+            setTimeout(() => {
+                const modalSucesso = document.querySelector('.modal--sucesso')
+
+                if(modalSucesso) modalSucesso.remove()
+            }, 3000);
         }
     }
 
