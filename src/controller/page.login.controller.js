@@ -37,10 +37,9 @@ export default class PaginaLogin {
             const data = {}
             const formBotaoLogin = [...event.target.form]
             formBotaoLogin.forEach(elem => {
-                //if(elem.value !== ""){
                 data[elem.name] = elem.value
+
                 console.log(data)
-                // }
             })
 
             console.log(await Login.logar(data))
@@ -50,11 +49,7 @@ export default class PaginaLogin {
         
 
             if(valueUsuario.message){
-                //senhaInput.id = (
-                
-                divErro.innerText =  (valueUsuario.message)
-
-                //window.location.reload(true)
+              divErro.innerText = valueUsuario.message
             }
             else{
                 window.location.replace("../src/views/homePage.html")
@@ -62,8 +57,9 @@ export default class PaginaLogin {
         })
         
         const divErro = document.querySelector("div")
+        const divOk = document.querySelector("div")
         const form = document.querySelector("form")
-        form.append(labelUsuario, usuarioInput, divErro, labelSenha, senhaInput, botaoLogin)
+        form.append(labelUsuario, usuarioInput, labelSenha, senhaInput, divErro, botaoLogin)
         
     }
 }
