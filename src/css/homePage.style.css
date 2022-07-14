@@ -325,11 +325,11 @@
 }
 
 .deletarContainer {
-    max-width: 95%;
-    height: 12.5rem;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    gap: 30px;
 }
 
 .deletarContainer h3 {
@@ -338,10 +338,6 @@
 
 .deletarContainer span {
     color: var(--grey-2);
-}
-
-.deletarContainer .botao--deletar {
-    /* max-width: 60%; */
 }
 
 @media screen and (min-width: 870px){
