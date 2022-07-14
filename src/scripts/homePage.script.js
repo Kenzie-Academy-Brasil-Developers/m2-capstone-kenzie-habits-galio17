@@ -28,14 +28,21 @@ class HomePage{
         e.preventDefault();
         const option = e.target;
         if(option.classList.contains("customOptions__option")){
-            const customSelect = e.composedPath()[4].querySelector(".customSelect__select")
+            const customSelect = e.composedPath()[4].querySelector(".select")
+            const categorias = document.querySelector('.customOptions');
+
             if(customSelect.classList.contains("customOptions__option")){
-                customSelect.className = "customSelect__select"
+                customSelect.className = "select"
+                customSelect.innerText = 'Selecionar categoria';
             }
+            categorias.classList.toggle('fechado')
             customSelect.classList.add(...option.classList)
             customSelect.value = option.value;
             customSelect.innerText = option.innerText;
-            // console.dir(option)
+        }
+        else if(option.classList.contains('customSelect__select')) {
+            const categorias = document.querySelector('.customOptions');
+            categorias.classList.toggle('fechado')
         }
         
     }

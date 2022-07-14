@@ -99,7 +99,9 @@ export default class UserPage extends Dom{
         `);
         habitoCategoria.insertAdjacentHTML('afterbegin', `
             <div class="customSelect__inner">
-                <button class="customSelect__select" name="habit_category" id="habit_category">Selecionar categoria</button>
+                <div class="customSelect__select">
+                    <button class="select" name="habit_category" id="habit_category">Selecionar categoria</button>
+                </div>
                 <div class="customSelect__customOptions customOptions fechado">
                     <button class="customOptions__option customOptions__option--casa" value="casa">Casa</button>
                     <button class="customOptions__option customOptions__option--estudo" value="estudos">Estudo</button>
