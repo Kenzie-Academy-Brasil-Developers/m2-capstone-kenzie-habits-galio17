@@ -251,13 +251,6 @@ form .botao {
     justify-content: flex-end;
 }
 
-.modal__header{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 37px;
-}
-
 .modal__inner{
     background-color: var(--grey-6);
     padding: 20px;
