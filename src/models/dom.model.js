@@ -11,9 +11,6 @@ export default class Dom {
         const imagem = document.createElement("img")
         modalTitulo.innerText = title
         modal.classList.add("modal")
-        if (sucess === true){
-            modal.classList.add("modal--sucesso")
-        }
         container.classList.add("container")
         modalInner.classList.add("modal__inner")
         modalCabecalho.classList.add("modal__cabecalho")
@@ -24,11 +21,26 @@ export default class Dom {
 
         figure.append(imagem)
         botaoFechar.append(figure)
-        modalCabecalho.append(modalTitulo, botaoFechar)
-        modalInner.append(modalCabecalho, elemento)
         container.append(modalInner)
         modal.append(container)
         body.append(modal)
+        
+        if (sucess === true){
+            const divInformacoes = document.createElement('div')
+            const spanSucess = document.createElement('span')
+            spanSucess.innerText = elemento
+            spanSucess.classList.add('span--sucesso')
+            modal.classList.add("modal--sucesso")
+
+            modalInner.append(modalCabecalho)
+            modalCabecalho.append(botaoFechar, divInformacoes)
+            divInformacoes.append(modalTitulo, spanSucess)
+        }
+
+        else{
+            modalCabecalho.append(modalTitulo, botaoFechar)
+            modalInner.append(modalCabecalho, elemento)
+        }
 
         botaoFechar.addEventListener("click", () => {
             modal.style.display = "none"

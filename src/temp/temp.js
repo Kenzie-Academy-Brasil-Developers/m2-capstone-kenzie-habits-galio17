@@ -1,6 +1,7 @@
 import { Habits } from "../controller/habits.controller.js";
 import { Login } from "../controller/login.controller.js";
 import { User } from "../controller/user.controller.js";
+import Dom from "../models/dom.model.js";
 
 const dataLogin = {
     email: "rafaelBertoldo@mail.com",
@@ -25,6 +26,8 @@ const dataUpdate = {
 let userUpdate = {
     usr_image: "https://www.google.com/images/Kammer"
 }
+
+Dom.modal('Modificação feita com sucesso!', "Sucesso", true)
 
 /* exemplos de requisições */
 
