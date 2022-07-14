@@ -1,30 +1,34 @@
 export default class Dom {
-    static modal(elemento, title){
+    static modal(elemento, title, sucess){
         const body = document.querySelector("body")
         const modal = document.createElement("div")
         const container = document.createElement("div")
         const modalInner = document.createElement("div")
         const modalTitulo = document.createElement("h2")
+        const modalCabecalho = document.createElement("div")
         const botaoFechar = document.createElement("button")
         const figure = document.createElement("figure")
         const imagem = document.createElement("img")
         modalTitulo.innerText = title
-        modal.classList.add("modal", "modal__habito")
+        modal.classList.add("modal")
+        if (sucess === true){
+            modal.classList.add("modal--sucesso")
+        }
         container.classList.add("container")
         modalInner.classList.add("modal__inner")
+        modalCabecalho.classList.add("modal__cabecalho")
         modalTitulo.classList.add("modal__titulo")
         botaoFechar.classList.add("modal__botaoFechar")
 
         botaoFechar.type = "button"
-        imagem.src = "../../src/assets/img/X.png"
-        imagem.alt = "Fechar"
 
-        figure.appendChild(imagem)
-        botaoFechar.appendChild(figure)
-        modalInner.append(modalTitulo, elemento)
-        container.append(modalInner, botaoFechar)
-        modal.appendChild(container)
-        body.appendChild(modal)
+        figure.append(imagem)
+        botaoFechar.append(figure)
+        modalCabecalho.append(modalTitulo, botaoFechar)
+        modalInner.append(modalCabecalho, elemento)
+        container.append(modalInner)
+        modal.append(container)
+        body.append(modal)
 
         botaoFechar.addEventListener("click", () => {
             modal.style.display = "none"
@@ -81,4 +85,31 @@ export default class Dom {
 
         return form;
     }
+
+
+    static modelSucessLogin(sucesso){
+
+        const body = document.querySelector("body")
+        const modal = document.createElement("div")
+        const container = document.createElement("div")
+        const modalInner = document.createElement("div")
+        const modalCabecalho = document.createElement("div")
+        const figure = document.createElement("figure")
+        const imagem = document.createElement("img")
+        modal.classList.add("modal")
+        if (sucesso === true){
+            modal.classList.add("modal--sucesso")
+        }
+        container.classList.add("container")
+        modalInner.classList.add("modal__inner")
+        modalCabecalho.classList.add("modal__cabecalho")
+
+
+        figure.append(imagem)
+        modalInner.append(modalCabecalho)
+        container.append(modalInner)
+        modal.append(container)
+        body.append(modal)
+}
+
 }
