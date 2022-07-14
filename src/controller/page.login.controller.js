@@ -1,13 +1,12 @@
 import { Login } from "./login.controller.js"
-
 export default class PaginaLogin {
-
     static login() {
 
         const botaoLogin = document.createElement("button")
         botaoLogin.classList.add("botaoLogin")
         botaoLogin.innerText = "Entrar"
         botaoLogin.type = "button"
+
 
 
         const xSairUsuario = document.createElement("div")
@@ -22,11 +21,13 @@ export default class PaginaLogin {
         xSairSenha.style.display = "none"
 
 
+
         const usuarioInput = document.createElement("input")
         usuarioInput.type = "email"
         usuarioInput.name = "email"
         usuarioInput.id = "email"
         usuarioInput.placeholder = "exemplo@mail.com"
+
 
         usuarioInput.addEventListener("click", () => {
             xSairUsuario.style.display = "flex"
@@ -38,11 +39,13 @@ export default class PaginaLogin {
         })
 
 
+
         const senhaInput = document.createElement("input")
         senhaInput.type = "password"
         senhaInput.name = "password"
         senhaInput.id = "password"
         senhaInput.placeholder = "Digitar sua senha"
+
 
         senhaInput.addEventListener("click", () => {
             xSairSenha.style.display = "flex"
@@ -56,8 +59,8 @@ export default class PaginaLogin {
 
         botaoLogin.addEventListener("click", async (event) => {
             event.preventDefault()
-
             const data = {}
+
             const formBotaoLogin = [...event.target.form]
             formBotaoLogin.forEach(elem => {
                 data[elem.name] = elem.value               
@@ -67,6 +70,7 @@ export default class PaginaLogin {
 
             if(valueUsuario.message){
               divErro.innerText = valueUsuario.message
+
             }
             else{
                 window.location.replace("../src/views/homePage.html")
@@ -87,5 +91,6 @@ export default class PaginaLogin {
         sairBotaoSenha.append(senhaInput, xSairSenha)
         
         
+
     }
 }
