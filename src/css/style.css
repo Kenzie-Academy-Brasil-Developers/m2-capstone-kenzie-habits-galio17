@@ -329,6 +329,7 @@ form .statusForm input {
 .modal--sucesso .modal__cabecalho{
     flex-direction: row;
     align-items: center;
+    justify-content: center;
 }
 
 .modal--sucesso .modal__inner {
