@@ -1,17 +1,25 @@
 import { Login } from "./login.controller.js"
-
 export default class PaginaLogin {
-
     static login() {
-    
-        // constroi botão de login
+
         const botaoLogin = document.createElement("button")
+        botaoLogin.classList.add("botaoLogin")
         botaoLogin.innerText = "Entrar"
         botaoLogin.type = "button"
 
 
-        const labelUsuario = document.createElement("label")
-        labelUsuario.innerText = "Usuário"
+
+        const xSairUsuario = document.createElement("div")
+        xSairUsuario.classList.add("xsairUsuario")
+        xSairUsuario.innerText = "x"
+        xSairUsuario.style.display = "none"
+
+
+        const xSairSenha = document.createElement("div")     
+        xSairSenha.classList.add("xsairSenha")
+        xSairSenha.innerText = "x"
+        xSairSenha.style.display = "none"
+
 
 
         const usuarioInput = document.createElement("input")
@@ -21,8 +29,15 @@ export default class PaginaLogin {
         usuarioInput.placeholder = "exemplo@mail.com"
 
 
-        const labelSenha = document.createElement("label")
-        labelSenha.innerText = "Senha"
+        usuarioInput.addEventListener("click", () => {
+            xSairUsuario.style.display = "flex"
+            
+            xSairUsuario.addEventListener("click", () => {
+                usuarioInput.value = ""
+                xSairUsuario.style.display = "none"
+            })
+        })
+
 
 
         const senhaInput = document.createElement("input")
@@ -31,39 +46,51 @@ export default class PaginaLogin {
         senhaInput.id = "password"
         senhaInput.placeholder = "Digitar sua senha"
 
+
+        senhaInput.addEventListener("click", () => {
+            xSairSenha.style.display = "flex"
+
+            xSairSenha.addEventListener("click", () => {
+                senhaInput.value = ""
+                xSairSenha.style.display = "none"
+            })
+        })
+
+
         botaoLogin.addEventListener("click", async (event) => {
             event.preventDefault()
-
             const data = {}
+
             const formBotaoLogin = [...event.target.form]
             formBotaoLogin.forEach(elem => {
-                //if(elem.value !== ""){
-                data[elem.name] = elem.value
-                console.log(data)
-                // }
+                data[elem.name] = elem.value               
             })
 
-            console.log(await Login.logar(data))
-
-            const valueUsuario =  await Login.logar(data)
-            console.log(valueUsuario)
-        
+            const valueUsuario =  await Login.logar(data)        
 
             if(valueUsuario.message){
-                //senhaInput.id = (
-                
-                divErro.innerText =  (valueUsuario.message)
+              divErro.innerText = valueUsuario.message
 
-                //window.location.reload(true)
             }
             else{
                 window.location.replace("../src/views/homePage.html")
             }
         })
-        
-        const divErro = document.querySelector("div")
+
+
+        const divErro = document.querySelector(".divErro")
         const form = document.querySelector("form")
-        form.append(labelUsuario, usuarioInput, divErro, labelSenha, senhaInput, botaoLogin)
+
+        form.append( divErro, botaoLogin)
+        //   labelUsuario, labelSenha)
+
+        const sairBotaoUsuario = document.querySelector(".sairBotaoUsuario")
+        const sairBotaoSenha = document.querySelector(".sairBotaoSenha")
+
+        sairBotaoUsuario.append(usuarioInput, xSairUsuario)
+        sairBotaoSenha.append(senhaInput, xSairSenha)
         
+        
+
     }
 }
