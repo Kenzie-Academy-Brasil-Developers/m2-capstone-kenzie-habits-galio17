@@ -18,19 +18,18 @@
     --button-input: #415AF3;
     --color-body-mobile: #001449;
     --color-button-mobile: #012677;
+
 }
 body{
     background-color: var(--color-body-mobile);
     font-family: var(--fonte-base);
 }
-
 aside{
    height: 0px;
    visibility: hidden;
    display: flex;
    justify-content: center;
 }
-
 .container{
     display: flex;
     flex-direction: column;
@@ -38,7 +37,6 @@ aside{
     justify-content: space-evenly;
     height: 90vh;
 }
-
 .tituloLogin{
     -o-animation-direction: alternate-reverse;
     color: var(--grey-5);
@@ -49,14 +47,12 @@ aside{
     font-style: normal;
     line-height: 24px;
 }
-
 form{
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
-
 label{
     font-weight: var(--text-2-400);
     font-size: var(--title-5);
@@ -74,9 +70,7 @@ input{
     font-family: 'Inter', sans-serif;
     font-weight: var(--text-4-500);
 }
-
 input:invalid{
-
     color: var(--error-1);
     border: solid 2px var(--error-1);
 }
@@ -107,6 +101,7 @@ input::before{
     line-height: 19px;
     
 }
+
 
 .xsairUsuario{
     display: flex;
@@ -160,28 +155,23 @@ input::before{
 }
 
 
-
 @media (min-width: 481px){
-
     .tituloLogin{
         font-family: var(--title-1);
         font-weight: var(--text-4-500);
         font-size: var(--title-2);
         font-style: normal;
     }
-
     label{
         font-weight: var(--text-1-400);
         font-size: 18px;
     }
-
     input{
         font-weight: var(--text-1-400);
         font-size: 18px;
         padding: 10px 16px;
         margin: 10px;
     }
-
 
     .botaoLogin{
         font-weight: 600;
@@ -208,7 +198,7 @@ input::before{
         padding: 16px 18px;
         margin: 10px;
     }
-    
+ 
     .botaoLogin{
         font-family: var(--title-2);
         font-weight: var(--text-2-500);
@@ -222,13 +212,11 @@ input::before{
     }
 }
 
-
 @media (min-width: 1023px){
 
     .container{
         height: inherit;
     }
-
     body{
         background-color: var(--grey-5);
         height: 50vw;
@@ -245,7 +233,6 @@ input::before{
         border-radius: 10px;
         box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
     }
-
     aside{
         height: 100%;
         visibility: visible;
@@ -260,7 +247,6 @@ input::before{
         font-size: var(--title-2);
         margin: 0px 50px 57px;
     }
-
     h3{
         font-size: var(--title-4);
         margin: 20px 50px;
@@ -268,7 +254,6 @@ input::before{
         word-wrap: wrap;
         text-align: justify;
     }
-
     p{
         margin: 20px 50px;
     }
@@ -281,6 +266,7 @@ input::before{
         margin-top: 8px;
         margin-left: 6px;
         min-height: 20px;
+
     }
 
     .container{
@@ -290,7 +276,6 @@ input::before{
         justify-content: center;
         max-width: 500px;
     }
-
     .tituloLogin{
         font-family: var(--fonte-base);
         font-weight: var(--text-4-500);
@@ -299,14 +284,12 @@ input::before{
         margin: 20px 50px;
         color: var(--grey-1);
     }
-
     form{
         height: 220px;
         display: flex;
         align-items: flex-start;
         margin: 19px 50px -22px 50px;
     }
-
     label{
         display: flex;
         font-weight: var(--text-1-400);
@@ -314,7 +297,6 @@ input::before{
         line-height: 12px;
         color: var(--grey-1);
     }
-
     input{
         font-weight: var(--text-3-400);
         font-size: var(--title-5);
@@ -323,7 +305,6 @@ input::before{
         width: 300px;
 
     }
-
 
     .botaoLogin{
 
