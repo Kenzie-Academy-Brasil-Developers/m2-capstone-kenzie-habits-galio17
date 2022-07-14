@@ -121,7 +121,11 @@ form input::placeholder, textarea::placeholder {
 
 form input:focus, textarea:focus {
     outline: none;
-    border: 2px solid var(--brand-1);
+}
+
+form input:invalid{
+    border: 2px solid  var(--error-2);
+    background-color: var(--error-2);
 }
 
 form form .botao {

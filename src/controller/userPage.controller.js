@@ -83,12 +83,14 @@ export default class UserPage extends Dom{
         habitoTitulo.type = 'text'
         habitoTitulo.name = 'habit_title';
         habitoTitulo.id = 'habit_title';
+        habitoTitulo.minLength = 1;
         habitoTitulo.insertAdjacentHTML('beforebegin',`
             <label for="habit_title">Título</label>
         `);
 
         habitoDescricao.name = 'habit_description';
         habitoDescricao.id = 'habit_description';
+        habitoDescricao.minLength = 1;
         habitoDescricao.insertAdjacentHTML('beforebegin', `
         <label for="habit_description">Descrição</label>
         `);

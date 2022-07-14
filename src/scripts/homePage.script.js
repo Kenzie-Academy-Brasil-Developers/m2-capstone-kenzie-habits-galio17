@@ -77,7 +77,6 @@ class HomePage{
             let user = await User.updateProfile(usuarioEditado);
 
             if(user.message){
-                alert(user.message)
                 
             } else {
                 UserPage.modal('Usuário atualizado', 'Sucesso', true);
@@ -127,7 +126,7 @@ class HomePage{
             }
 
             if(habito.message){
-                alert(habito.message)
+    
             } else {
                 UserPage.modal('Hábito salvo', 'Sucesso', true)
 
