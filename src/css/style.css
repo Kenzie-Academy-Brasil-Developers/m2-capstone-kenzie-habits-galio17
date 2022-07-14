@@ -232,6 +232,10 @@ form .statusForm input {
     gap: 15px;
 }
 
+.botoesContainer button {
+    max-width: calc(50% - 15px);
+}
+
 .botoesContainer .botao--envio, .botoesContainer.botao--deletar {
     flex: 1;
 }
