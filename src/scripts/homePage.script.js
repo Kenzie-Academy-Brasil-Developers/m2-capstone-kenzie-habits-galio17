@@ -2,6 +2,7 @@
 // import Dom from "../models/dom.model.js";
 import UserPage from "../controller/userPage.controller.js";
 import { Habits } from "../controller/habits.controller.js";
+import { User } from "../controller/user.controller.js"
 
 let listaDeHabitos = await Habits.ReadAll()
 
@@ -39,23 +40,59 @@ class HomePage{
         
     }
 
-    static async inserirHabito(e){
-        e.preventDefault();
-        const form = e.composedPath()[2];
-        
-        const inserir = e.target
-        if(inserir.classList.contains("botao--envio")){
-            let novoHabito = {}
+    static salvarInformacoes(form){
+        let novaInfo = {}
             
-            const modal = event.composedPath()[5];
-            const elemensHabitos = form.elements;
+            const elemensInfo = form.elements;
 
-            for(let i = 0; i < elemensHabitos.length; i++){
-                let itemHabitos = elemensHabitos[i]
-                if(itemHabitos.name) {
-                    novoHabito[itemHabitos.name] = itemHabitos.value;
+            for(let i = 0; i < elemensInfo.length; i++){
+                let itemInfo = elemensInfo[i]
+                if(itemInfo.name) {
+                    novaInfo[itemInfo.name] = itemInfo.value;
                 }
             }
+            return novaInfo
+    }
+
+    static async salvarUsuario(e){
+        e.preventDefault();
+        const form = e.composedPath()[3].querySelector("form");
+        
+        const inserir = e.target
+        if(inserir.classList.contains("botao--envio/usuario")){
+
+            let usuarioEditado = HomePage.salvarInformacoes(form)
+            
+            const modal = event.composedPath()[4];
+  
+            let user = await User.updateProfile(usuarioEditado);
+
+            if(user.message){
+                alert(user.message)
+                
+            } else {
+                
+                localStorage.setItem("@kenzie-habits:user_name", user.usr_name)
+                localStorage.setItem("@kenzie-habits:user_img", user.usr_image)
+
+                UserPage.header()
+
+                modal.remove()
+            }
+        }
+    }
+
+    static async salvarHabito(e){
+        e.preventDefault();
+        const form = e.composedPath()[3].querySelector("form");
+        
+        const inserir = e.target
+        if(inserir.classList.contains("botao--envio/habito")){
+
+            let novoHabito = HomePage.salvarInformacoes()
+            
+            const modal = event.composedPath()[5];
+  
             let habito
 
             if(form.classList.contains("formulario--criarHabito")) {
@@ -63,8 +100,16 @@ class HomePage{
             } else if (form.classList.contains("formulario--editarHabito")) {
                 delete novoHabito.habit_status
                 habito = await Habits.UpdateHabit(this.habitoId, novoHabito);
+            } else if (form.classList.contains("formulario--editarPerfil")) {
+                habito = await User.updateProfile(novoHabito);
+
+                localStorage.setItem("@kenzie-habits:user_name", habito.usr_name)
+                localStorage.setItem("@kenzie-habits:user_img", habito.usr_image)
+
+                UserPage.header()
+
             }
-        
+
             if(habito.message){
                 alert(habito.message)
             } else {
@@ -138,7 +183,28 @@ class HomePage{
             UserPage.listarVitrine(listaDeHabitos);
         }
     }
+
+    static edutarPerfil(e){
+        const botaoEditar = e.target;
+        if(botaoEditar.classList.contains("editarPerfil")){
+            UserPage.editarUsuario()
+        }
+    }
+
+    static sairDoPerfil(e){
+        const sair = e.target;
+
+        if(sair.classList.contains("sair")){
+            localStorage.clear();
+            window.location.replace("../../index.html")
+        }    
+    }
+
 }
+
+
+
+
 
 criar.addEventListener("click", HomePage.criarHabito)
 todos.addEventListener("click", HomePage.filtrarTodos)
@@ -149,11 +215,14 @@ concluido.addEventListener("click", HomePage.filtrarConcluidos)
 
 addEventListener("click", HomePage.editarHabito)
 addEventListener("click", HomePage.selectForm)
-addEventListener("click", HomePage.inserirHabito)
+addEventListener("click", HomePage.salvarHabito)
 addEventListener("click", HomePage.completarHabito)
 addEventListener("click", HomePage.confirmarDelete)
 addEventListener("click", HomePage.cancelarDelete)
 addEventListener("click", HomePage.deletarHabito)
+addEventListener("click", HomePage.edutarPerfil)
+addEventListener("click", HomePage.sairDoPerfil)
+addEventListener("click", HomePage.salvarUsuario)
 
 
 

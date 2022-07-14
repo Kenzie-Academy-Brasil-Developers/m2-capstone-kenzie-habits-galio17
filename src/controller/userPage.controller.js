@@ -13,6 +13,12 @@ export default class UserPage extends Dom{
         nomeUsuario.innerText = username
         fotoPerfilUm.src = avatar
         fotoPerfilDois.src = avatar
+
+        fotoPerfilUm.addEventListener("error", () =>{
+            fotoPerfilUm.src = "../assets/img/unnamed.jpg"
+            fotoPerfilDois.src = "../assets/img/unnamed.jpg"
+        })
+
     }
 
     static listarVitrine(listaDeHabitos) {
@@ -106,7 +112,7 @@ export default class UserPage extends Dom{
 
         habitoBotoes.append(habitoBotaoEnvio);
         habitoBotaoEnvio.innerText = 'Inserir';
-        habitoBotaoEnvio.classList.add('botao', "botao--envio")
+        habitoBotaoEnvio.classList.add('botao', "botao--envio", "botao--envio/habito")
 
         if(eParaEditar) {
             form.classList.add('formulario--editarHabito');
@@ -171,9 +177,11 @@ export default class UserPage extends Dom{
         const form = document.createElement('form');
         const botaoEnviar = document.createElement('button')
 
+        form.classList.add("formulario--editarPerfil")
+
         botaoEnviar.type = 'submit'
         botaoEnviar.innerText = 'Salvar Alterações'
-        botaoEnviar.classList.add('botao')
+        botaoEnviar.classList.add('botao', 'botao--envio', 'botao--envio/usuario')
 
         console.log(localStorage.getItem('@kenzie-habits:user_img'))
 
@@ -206,8 +214,8 @@ export default class UserPage extends Dom{
             novoInput.id = dado.name;
             novoInput.value = dado.value;
             
-            modalInner.append(form, botaoEnviar)
-            form.append(novoLabel, novoInput);
+            modalInner.append(form)
+            form.append(novoLabel, novoInput, botaoEnviar);
         });
     }
 
