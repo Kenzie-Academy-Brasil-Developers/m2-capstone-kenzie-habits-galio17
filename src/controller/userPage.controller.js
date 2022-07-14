@@ -110,6 +110,7 @@ export default class UserPage extends Dom{
             </div>
         `);
 
+        habitoBotoes.classList.add('botoesContainer')
         habitoBotoes.append(habitoBotaoEnvio);
         habitoBotaoEnvio.innerText = 'Inserir';
         habitoBotaoEnvio.classList.add('botao', "botao--envio", "botao--envio/habito")
@@ -124,6 +125,7 @@ export default class UserPage extends Dom{
             `);
             habitoBotoes.insertAdjacentElement('beforebegin', habitoStatus)
 
+            habitoStatus.classList.add('statusForm')
             habitoStatus.insertAdjacentHTML('afterbegin', `
                 <label for="habit_status">Status</label>
                 <input class="input" type="checkbox" name="habit_status" id="habit_status">
@@ -225,8 +227,12 @@ export default class UserPage extends Dom{
         const detalhes = document.createElement('span');
         const botoesContainer = document.createElement('div');
 
+        deletarContainer.classList.add('deletarContainer')
+        
         confirmacao.innerText = 'Certeza que deseja excluir este hábito?';
         detalhes.innerText = 'Após executar essa ação não será possível desfazer';
+
+        botoesContainer.classList.add('botoesContainer')
         botoesContainer.insertAdjacentHTML('afterbegin', `
             <button class="botao botao--secundario botao--cancelar">Cancelar</button>
             <button class="botao botao--deletar">Sim, excluir este hábito</button>
