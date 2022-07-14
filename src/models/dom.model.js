@@ -43,7 +43,7 @@ export default class Dom {
         }
 
         botaoFechar.addEventListener("click", () => {
-            modal.style.display = "none"
+            modal.remove()
         })
         //Para abrir XXX.addEventListerner("click, () => {
         //const modal = document.querySelector(".modal__habito")
