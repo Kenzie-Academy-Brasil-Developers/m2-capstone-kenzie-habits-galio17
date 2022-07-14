@@ -1,24 +1,19 @@
 // import { Habits } from "../controller/habits.controller.js";
 // import Dom from "../models/dom.model.js";
 import UserPage from "../controller/userPage.controller.js";
-
 import { Habits } from "../controller/habits.controller.js";
 
-const nome = localStorage.getItem('@kenzie-habits:user_name')
+let listaDeHabitos = await Habits.ReadAll()
 
-let habito = await Habits.ReadAll()
+// console.log(listaDeHabitos)
+UserPage.header()
 
-// console.log(habito)
-UserPage.header(nome)
-UserPage.menu()
-
-habito.forEach(element => {
-    UserPage.vitrine(element.habit_status, element.habit_title, element.habit_description, element.habit_category)
-});
+UserPage.listarVitrine(listaDeHabitos)
 
 const criar = document.querySelector(".botaoCriar")
 
 class HomePage{
+    static habitoId = '';
 
     static criarHabito(){
 
@@ -37,40 +32,47 @@ class HomePage{
             customSelect.classList.add(...option.classList)
             customSelect.value = option.value;
             customSelect.innerText = option.innerText;
-            console.dir(option)
+            // console.dir(option)
         }
         
     }
 
     static async inserirHabito(e){
-        const form = e.composedPath()[2];
         e.preventDefault();
-
+        const form = e.composedPath()[2];
+        
         const inserir = e.target
         if(inserir.classList.contains("botao--envio")){
-           let novoHabito = {}
+            let novoHabito = {}
+            
+            const modal = event.composedPath()[5];
+            const elemensHabitos = form.elements;
 
-           const elemensHabitos = form.elements;
-
-           for(let i = 0; i < elemensHabitos.length; i++){
-            let itemHabitos = elemensHabitos[i]
-            if(itemHabitos.name !== ""){
-                novoHabito[itemHabitos.name] = itemHabitos.value;
+            for(let i = 0; i < elemensHabitos.length; i++){
+                let itemHabitos = elemensHabitos[i]
+                if(itemHabitos.name) {
+                    novoHabito[itemHabitos.name] = itemHabitos.value;
+                }
             }
-           }
-        //    console.log(novoHabito)
-          const habitoCriado = await  Habits.CreateHabit(novoHabito)
-          if(habitoCriado.message){
-            alert(habitoCriado.message)
-          } else {
+            let habito
 
-            habito = await Habits.ReadAll()
+            if(form.classList.contains("formulario--criarHabito")) {
+                habito = await Habits.CreateHabit(novoHabito)
+            } else if (form.classList.contains("formulario--editarHabito")) {
+                delete novoHabito.habit_status
+                habito = await Habits.UpdateHabit(this.habitoId, novoHabito);
+            }
+        
+            if(habito.message){
+                alert(habito.message)
+            } else {
 
-            habito.forEach(element => {
-                UserPage.vitrine(element.habit_status, element.habit_title, element.habit_description, element.habit_category)
-            });
+                listaDeHabitos = await Habits.ReadAll()
 
-          }
+                UserPage.listarVitrine(listaDeHabitos)
+
+                modal.remove()
+            }
         }
     }
 
@@ -78,11 +80,34 @@ class HomePage{
         const botao = e.target;
         if(botao.classList.contains("editarHabito")){
             UserPage.criarFormHabito(true)
+            this.habitoId = e.composedPath()[2].id
         }
     }
 
-    
+    static async filtrarTodos() {
+        listaDeHabitos = await Habits.ReadAll();
 
+        UserPage.listarVitrine(listaDeHabitos);
+    }
+
+    static async filtrarConcluídos() {
+        listaDeHabitos = await Habits.ReadAll();
+
+        const listaDeConcluidos = listaDeHabitos.filter((habito) => habito.habit__status)
+
+        UserPage.listarVitrine(listaDeConcluidos);
+    }
+
+    static async completarHabito(e) {
+        const checkbox = e.target 
+        if(checkbox.classList.contains('input')) {
+            this.habitoId = e.composedPath()[2].id
+            const habito = await Habits.CompleteHabit(this.habitoId)
+
+            listaDeHabitos = await Habits.ReadAll()
+            UserPage.listarVitrine(listaDeHabitos)
+        }
+    }
 
 }
 
@@ -94,6 +119,7 @@ criar.addEventListener("click", HomePage.criarHabito)
 addEventListener("click", HomePage.editarHabito)
 addEventListener("click", HomePage.selectForm)
 addEventListener("click", HomePage.inserirHabito)
+addEventListener("click", HomePage.completarHabito)
 
 
 

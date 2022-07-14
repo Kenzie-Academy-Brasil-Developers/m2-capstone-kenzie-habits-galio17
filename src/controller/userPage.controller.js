@@ -1,6 +1,8 @@
 import Dom from "../models/dom.model.js"
 
 export default class UserPage extends Dom{
+    static tbody = document.querySelector(".tbody")
+
     static header(){
         let username = localStorage.getItem("@kenzie-habits:user_name")
         let avatar = localStorage.getItem("@kenzie-habits:user_img")
@@ -13,8 +15,15 @@ export default class UserPage extends Dom{
         fotoPerfilDois.src = avatar
     }
 
-    static vitrine(statusP, atividadeP, descricaoP, categoriaP){
-        const tbody = document.querySelector(".tbody")
+    static listarVitrine(listaDeHabitos) {
+        this.tbody.innerHTML = '';
+
+        listaDeHabitos.forEach((habito) => {
+            UserPage.vitrine(habito.habit_status, habito.habit_title, habito.habit_description, habito.habit_category, habito.habit_id);
+        })
+    }
+
+    static vitrine(statusP, atividadeP, descricaoP, categoriaP, id){
         const caixaHabits = document.createElement("tr")
         const checkout = document.createElement("td")
         const input = document.createElement("input")
@@ -35,11 +44,12 @@ export default class UserPage extends Dom{
         CaixaBotaoEditar.classList.add("CaixaBotaoEditar")
         editarHabito.classList.add("editarHabito")
    
-        checkout.type = "chechbox"
-        checkout.checked = statusP 
+        caixaHabits.id = id
+        input.type = "checkbox"
+        input.checked = statusP 
         atividadePlanejada.innerText = atividadeP
         descricapDetalhada.innerText = descricaoP
-        if(categoriaP === "Saude"){
+        if(categoriaP === "saude"){
             categoriaP = "Saúde"
         }
         categoriaDetalhada.innerText = categoriaP
@@ -49,10 +59,10 @@ export default class UserPage extends Dom{
         tdCategoria.appendChild(categoriaDetalhada)
         checkout.appendChild(input)
         caixaHabits.append(checkout, atividadePlanejada, descricapDetalhada, tdCategoria, CaixaBotaoEditar)
-        tbody.appendChild(caixaHabits)
+        this.tbody.appendChild(caixaHabits)
     }
 
-    static criarFormHabito(edicao) {
+    static criarFormHabito(eParaEditar) {
         const form = document.createElement('form');
 
         const habitoTitulo = document.createElement('input');
@@ -86,7 +96,7 @@ export default class UserPage extends Dom{
                 <button class="customSelect__select" name="habit_category" id="habit_category">Selecionar categoria</button>
                 <div class="customSelect__customOptions customOptions fechado">
                     <button class="customOptions__option customOptions__option--casa" value="casa">Casa</button>
-                    <button class="customOptions__option customOptions__option--estudo" value="estudo">Estudo</button>
+                    <button class="customOptions__option customOptions__option--estudo" value="estudos">Estudo</button>
                     <button class="customOptions__option customOptions__option--lazer" value="lazer">Lazer</button>
                     <button class="customOptions__option customOptions__option--trabalho" value="trabalho">Trabalho</button>
                     <button class="customOptions__option customOptions__option--saude" value="saude">Saúde</button>
@@ -96,25 +106,29 @@ export default class UserPage extends Dom{
 
         habitoBotoes.append(habitoBotaoEnvio);
         habitoBotaoEnvio.innerText = 'Inserir';
-        habitoBotaoEnvio.classList.add("botao--envio")
+        habitoBotaoEnvio.classList.add('botao', "botao--envio")
 
-        if(edicao) {
+        if(eParaEditar) {
             form.classList.add('formulario--editarHabito');
 
+            habitoBotaoEnvio.classList.add("botao--envio")
             habitoBotaoEnvio.innerText = 'Salvar alterações';
             habitoBotoes.insertAdjacentHTML('afterbegin', `
-                <button>Excluir</button>
+                <button class="botao botao--secundario">Excluir</button>
             `);
             habitoBotoes.insertAdjacentElement('beforebegin', habitoStatus)
 
             habitoStatus.insertAdjacentHTML('afterbegin', `
                 <label for="habit_status">Status</label>
-                <input type="checkbox" name="habit_status" id="habit_status">
+                <input class="input" type="checkbox" name="habit_status" id="habit_status">
             `);
 
             this.modal(form, 'Editar hábito');
         }
-        else this.modal(form, 'Criar hábito');
+        else {
+            form.classList.add('formulario--criarHabito');
+            this.modal(form, 'Criar hábito');
+        }
     }
 
     static editarUsuario(){
