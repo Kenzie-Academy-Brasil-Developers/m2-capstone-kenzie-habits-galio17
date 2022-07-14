@@ -138,22 +138,6 @@ form .invalido--mensagem {
     bottom: 15px;
 }
 
-form .customSelect {
-    display: flex;
-    justify-content: flex-end;
-}
-
-form .customSelect__select::after {
-    content: "";
-    background-image: url(../assets/img/angle-down.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 15px;
-    height: 15px;
-    position: relative;
-    float: right;
-}
-
 form .customSelect__inner, .customSelect__select {
     width: 100%;
 }
@@ -161,11 +145,14 @@ form .customSelect__inner, .customSelect__select {
 form .customOptions {
     border-radius: 4px;
     width: 100%;
-    height: max-content;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    position: relative;
+    position: fixed;
+    left: 0;
+    top: 0;
 }
 
 form .customOptions::-webkit-scrollbar {
@@ -175,7 +162,8 @@ form .customOptions::-webkit-scrollbar {
 form .customOptions__option {
     background: var(--grey-6);
     padding: 12px 25px;
-    width: 100%;
+    width: 80%;
+    max-width: 28.875rem;
     display: flex;
     align-items: center;
     gap: 28px;
@@ -189,7 +177,7 @@ form .customOptions__option::before {
     content: "";
     background-repeat: no-repeat;
     background-position: center;
-    width: 16px;
+    width: 20px;
     height: 20px;
 }
 
@@ -211,6 +199,32 @@ form .customOptions__option--trabalho::before {
 
 form .customOptions__option--saude::before {
     background-image: url(../assets/img/saude.svg);
+}
+
+form .customSelect {
+    display: flex;
+    justify-content: flex-end;
+}
+
+form .customSelect__select {
+    display: flex;
+    justify-content: space-between;
+}
+
+form .customSelect__select::after {
+    content: "";
+    background-image: url(../assets/img/angle-down.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 15px;
+    height: 15px;
+    position: relative;
+    float: right;
+}
+
+form .select {
+    background-color: transparent;
+    padding: 0;
 }
 
 form .statusForm {
@@ -344,6 +358,6 @@ form .statusForm input {
     height: 59px;
 }
 
-.fechar {
+.fechado {
     display: none!important;
 }
