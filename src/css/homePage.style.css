@@ -1,12 +1,4 @@
 :root{
-    --brand-1: #415AF3;
-    --brand-2: #D7E4FB;
-    --brand-3: #D7E4FB; 
-    --brand-4: black;
-    --grey-1: #212529;
-    --grey-2: #343A40;
-    --grey-3: #A1A1A1;
-    --grey-4: #E9ECEF; 
     --white: white; 
     --main-font: 'Inter', sans-serif;
 }
@@ -212,13 +204,13 @@
     width: 100vw;
     height: 50px;
     border-bottom: 1px solid var(--grey-3);
+    color: #A1A1A1;
 }
 
 .status{
     height: 50px;
     font-family: var(--main-font);
     font-size: 16px;
-    color: var(--grey-3);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -228,7 +220,6 @@
     height: 50px;
     font-family: var(--main-font);
     font-size: 16px;
-    color: var(--grey-3);
     text-align: start;
 }
 
@@ -236,7 +227,6 @@
     height: 50px;
     font-family: var(--main-font);
     font-size: 16px;
-    color: var(--grey-3);
     text-align: start;
     display: none; 
 }
@@ -245,7 +235,6 @@
     height: 50px;
     font-family: var(--main-font);
     font-size: 16px;
-    color: var(--grey-3);
     text-align: start;
     display: none;
 }
@@ -254,7 +243,6 @@
     height: 50px;
     font-family: var(--main-font);
     font-size: 16px;
-    color: var(--grey-3);
 }
 
 .caixaHabits{
@@ -301,7 +289,7 @@
 .categoriaDetalhada{
     width: 83px;
     height: 24px;
-    background-color: var(--brand-2);
+    background-color: var(--brand-3);
     color: var(--brand-1);
     font-family: var(--main-font);
     font-weight: bold;
@@ -323,7 +311,7 @@
     width: 83px;
     height: 24px;
     background-color: var(--white);
-    color: var(--grey-3);
+    color: #A1A1A1;
     font-family: var(--main-font);
     font-weight: bold;
     font-size: 30px;
@@ -334,6 +322,26 @@
 .editarHabito:hover{
     color: var(--grey-1);
     transition: 144ms;
+}
+
+.deletarContainer {
+    max-width: 95%;
+    height: 12.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.deletarContainer h3 {
+    font: var(--title-4);
+}
+
+.deletarContainer span {
+    color: var(--grey-2);
+}
+
+.deletarContainer .botao--deletar {
+    /* max-width: 60%; */
 }
 
 @media screen and (min-width: 870px){
