@@ -1,51 +1,31 @@
 :root{
-    /*Brand*/
-    --brand-1: #BC00FF;
-    --brand-2: #540073;
-    --brand-3: #540073;
-
-    /*Grey*/
-    --grey-1: #212529;
-    --grey-2: #343A40;
-    --grey-3: #DEE2E6;
-    --grey-4: #E9ECEF;
-    --grey-5: #F1F3F5;
-    --grey-5: #FFFFFF;
-
-    /*Feedback Palette*/
-    --sucess: #56CF8E;
-    --error-1: #E64445;
-    --error-2: #F03839;
-
     /*Typography*/
     --fonte-base: 'Inter', sans-serif;
-
     /*Fonts Size*/
     --title-1: 40px;
-    --title-2: 28px; 
-    --title-3: 24px; 
+    --title-2: 28px;
+    --title-3: 24px;
     --title-4: 20px;
     --title-5: 16px;
-
     /*Font Weight*/
-    --text-1-400: 400; 
-    --text-1-500: 500; 
-    --text-2-400: 400; 
-    --text-2-500: 500; 
-    --text-3-400: 400; 
-    --text-4-500: 500; 
+    --text-1-400: 400;
+    --text-1-500: 500;
+    --text-2-400: 400;
+    --text-2-500: 500;
+    --text-3-400: 400;
+    --text-4-500: 500;
 
     --button-input: #415AF3;
-    --color-body-mobile: #1b66ff;
-    --color-button-mobile: #412a9c;
+    --color-body-mobile: #001449;
+    --color-button-mobile: #012677;
 }
-
 body{
     background-color: var(--color-body-mobile);
     font-family: var(--fonte-base);
 }
 
 aside{
+   height: 0px;
    visibility: hidden;
    display: flex;
    justify-content: center;
@@ -60,14 +40,14 @@ aside{
 }
 
 .tituloLogin{
+    -o-animation-direction: alternate-reverse;
     color: var(--grey-5);
     display: flex;
     justify-content: center;
-    font-weight: 600;
-    font-size: var(--title-1);
+    font-weight: var(--text-2-500);
+    font-size: var(--title-3);
     font-style: normal;
     line-height: 24px;
-
 }
 
 form{
@@ -78,35 +58,41 @@ form{
 }
 
 label{
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
+    font-weight: var(--text-2-400);
+    font-size: var(--title-5);
+    line-height: 12px;
     margin: 8px;
     color: var(--grey-5);
+    font-family: var(--fonte-base);
 }
-
-
 
 input{
-    padding: 8px 14px;
-    border: red;
+    padding: 4px 10px;
     background-color: var(--grey-4) ;
     border-radius: 4px;
-    font-size: 14px;
-    font-family: var(--text-3-400);
-    font-weight: 400;
+    font-size: var(--title-5);
+    font-family: 'Inter', sans-serif;
+    font-weight: var(--text-4-500);
 }
 
-input:required:invalid{
+input:invalid{
+
     color: var(--error-1);
-    border: solid 2px var(--error-2);
-}
-input:required{
-    background-color: var(--sucess)
+    border: solid 2px var(--error-1);
 }
 
+input::before{
+    border: solid 50px var(--sucess);
+}
 
-button{
+.divErro{
+    animation-timing-function: ease;
+    color: var(--error-2);
+    font-size: 12px;
+    font-weight: var(--text-4-500);
+}
+
+.botaoLogin{
     background-color: var(--color-button-mobile);
     color: var(--grey-5);
     display: flex;
@@ -116,14 +102,62 @@ button{
     margin: 20px;
     border: none;
     border-radius: 4px;
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: var(--text-4-500);
+    font-size: var(--title-5);
     line-height: 19px;
+    
+}
+
+.xsairUsuario{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 14px;
+    height: 14px;
+
+    color: var(--grey-5);
+    border: solid 2px var(--error-1);
+    border-radius: 55%;
+    font-size: 12px;
+    background-color: var(--error-1);
+    
 }
 
 
+.xsairSenha{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    width: 14px;
+    height: 14px;
+    color: var(--grey-5);
+    border: solid 2px var(--error-1);
+    border-radius: 50%;
+    font-size: 12px;
+    background-color: var(--error-1);
+}
 
 
+.sairBotaoUsuario{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+   
+}
+
+.sairBotaoSenha{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+   
+}
 
 
 
@@ -131,8 +165,8 @@ button{
 
     .tituloLogin{
         font-family: var(--title-1);
-        font-weight: 600;
-        font-size: 28px;
+        font-weight: var(--text-4-500);
+        font-size: var(--title-2);
         font-style: normal;
     }
 
@@ -148,40 +182,49 @@ button{
         margin: 10px;
     }
 
-    button{
+
+    .botaoLogin{
         font-weight: 600;
         font-size: var(--title-4);
         line-height: 20px;
     }
-    
 }
 
-
 @media (min-width: 769px){
+
     .tituloLogin{
-        font-weight: 600;
+        font-weight: var(--text-4-500) ;
         font-size: var(--title-1);
         font-style: normal;
     }
 
-    input{
-        font-weight: var(--text-1-400);
-        font-size: 18px;
-        padding: 10px 16px;
-        margin: 10px;
+    label{
+        font-size: var(--title-3);
     }
 
-    button{
-        font-family: var(--title-3);
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 30px;
+    input{
+        font-weight: var(--text-1-400);
+        font-size: var(--title-4);
+        padding: 16px 18px;
+        margin: 10px;
     }
     
+    .botaoLogin{
+        font-family: var(--title-2);
+        font-weight: var(--text-2-500);
+        font-size: var(--title-3);
+        line-height: 30px;
+        
+    }
+
+    .divErro{
+        font-size: var(--title-5)
+    }
 }
 
 
-@media (min-width: 1025px){
+@media (min-width: 1023px){
+
     .container{
         height: inherit;
     }
@@ -194,7 +237,6 @@ button{
         justify-content: center;
     }
 
- 
     section{
         display: flex;
         justify-content: center;
@@ -205,14 +247,14 @@ button{
     }
 
     aside{
+        height: 100%;
         visibility: visible;
         flex-direction: column;
         background-color: var(--button-input);
         color: var(--grey-5);
-        max-width: 35vw;
+        width: 440px;
         border-radius: 10px 0px 0px 10px;
     }
-
 
     .textoLogin{
         font-size: var(--title-2);
@@ -220,8 +262,9 @@ button{
     }
 
     h3{
-        font-size: var(--title-3);
+        font-size: var(--title-4);
         margin: 20px 50px;
+        word-wrap: wrap;
         word-wrap: wrap;
         text-align: justify;
     }
@@ -230,22 +273,31 @@ button{
         margin: 20px 50px;
     }
 
+    .divErro{
+        display: flex;
+        font-size: 12px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 8px;
+        margin-left: 6px;
+        min-height: 20px;
+    }
+
     .container{
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        width: 500px;
+        max-width: 500px;
     }
 
     .tituloLogin{
-        font-family: var(--title-2);
-        font-weight: 600;
+        font-family: var(--fonte-base);
+        font-weight: var(--text-4-500);
         font-size: 28px;
         font-style: normal;
-        margin: 0px 50px;
+        margin: 20px 50px;
         color: var(--grey-1);
-        margin-top: 0px;
     }
 
     form{
@@ -257,34 +309,108 @@ button{
 
     label{
         display: flex;
-        font-size: var(--text-1-400);
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 14px; 
-        color: var(--grey-1);  
-
+        font-weight: var(--text-1-400);
+        font-size: var(--title-5);
+        line-height: 12px;
+        color: var(--grey-1);
     }
 
     input{
-        font-size: var(--text-3-400);
-        font-weight: 400;
-        font-size: 14px;
+        font-weight: var(--text-3-400);
+        font-size: var(--title-5);
         padding: 10px 18px;
-        margin: 4px;
+        margin: 0px;
         width: 300px;
-        gap: 10px;
+
     }
 
-    button{
+
+    .botaoLogin{
+
+        background-color: var(--button-input);
+        width: 340px;
         display: flex;
         align-items: center;
-        font-family: var(--text-2-400);
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 10px;
-        margin: 0px 53px;
-        width: 68%;
+        font-family: var(--fonte-base);
+        font-weight: var(--text-4-500);
+        font-size: var(--title-5);
+        line-height: 14px;
+        margin: 0px 0px;
         padding: 12px;
-        margin-top: 30px;
+        margin-top: 20px;
     }
+
+    .botaoLogin{
+        animation-timing-function: alter;
+    }
+
+
+    .botaoLogin:focus{
+        background-color: var(--button-input);
+    }
+
+    .botaoLogin:hover{
+        background-color: var(--color-button-mobile);
+    }
+
+
+    .xsairUsuario{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 14px;
+        height: 14px;
+
+        color: var(--error-1);
+        border: solid 2px var(--error-1);
+        border-radius: 55%;
+        font-size: 12px;
+        background-color: var(--grey-5);
+        
+    }
+
+    .xsairSenha{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        width: 14px;
+        height: 14px;
+        color: var(--error-1);
+        border: solid 2px var(--error-1);
+        border-radius: 50%;
+        font-size: 12px;
+        background-color: var(--grey-5);
+    }
+
+
+    .sairBotaoUsuario{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+       
+    }
+
+    .sairBotaoSenha{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+       
+    }
+
 }
+
+
+
+
+
+
+
+
+

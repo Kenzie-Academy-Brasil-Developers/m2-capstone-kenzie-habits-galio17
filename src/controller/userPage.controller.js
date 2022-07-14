@@ -1,86 +1,35 @@
 import Dom from "../models/dom.model.js"
 
 export default class UserPage extends Dom{
-    static header(title){
-        const body = document.querySelector("body")
-        const header = document.createElement("header")
+    static tbody = document.querySelector(".tbody")
 
-        const headerUm = document.createElement("div")
-        const tituloSite = document.createElement("h1")
-        const figureUm = document.createElement("figure")
-        const imagemUm = document.createElement("img")
+    static header(){
+        let username = localStorage.getItem("@kenzie-habits:user_name")
+        let avatar = localStorage.getItem("@kenzie-habits:user_img")
+        const nomeUsuario = document.querySelector(".nomeUsuario")
+        const fotoPerfilUm = document.querySelector(".fotoPerfilUm")
+        const fotoPerfilDois = document.querySelector(".fotoPerfilDois")
         
-        const headerDois = document.createElement("div")
-        const divFormato = document.createElement("div")
-        const figureDois = document.createElement("figure")
-        const imagemDois = document.createElement("img")
-        const nomeUsuario = document.createElement("h2")
+        nomeUsuario.innerText = username
+        fotoPerfilUm.src = avatar
+        fotoPerfilDois.src = avatar
 
-        header.classList.add("header")
+        fotoPerfilUm.addEventListener("error", () =>{
+            fotoPerfilUm.src = "../assets/img/unnamed.jpg"
+            fotoPerfilDois.src = "../assets/img/unnamed.jpg"
+        })
 
-        headerUm.classList.add("headerUm")
-        tituloSite.classList.add("tituloSite")
-        imagemUm.classList.add("fotoPerfilUm")
-
-        headerDois.classList.add("headerDois")
-        divFormato.classList.add("divFormato")
-        imagemDois.classList.add("fotoPerfilDois")
-        nomeUsuario.classList.add("nomeUsuario")
-
-        tituloSite.innerText = "KenzieHabit"
-        nomeUsuario.innerText = title
-        imagemUm.src = "../temp/imgsTemporarias/unnamed.jpg"
-        imagemUm.alt = "fotoPerfil"
-        imagemDois.src = "../temp/imgsTemporarias/unnamed.jpg"
-        imagemDois.alt = "fotoPerfil"
-
-        figureDois.appendChild(imagemDois)
-        divFormato.append(figureDois, nomeUsuario)
-        headerDois.appendChild(divFormato)
-        figureUm.appendChild(imagemUm)
-        headerUm.append(tituloSite, figureUm)
-        header.append(headerUm, headerDois)
-        body.appendChild(header)
     }
 
-    static menu(){
-        const body = document.querySelector("body")
-        const tituloEBotoes = document.createElement("div")
-        const titulo = document.createElement("h1")
-        const organizacaoBotoes = document.createElement("div")
-        const botaoTodos = document.createElement("button")
-        const botaoConcluido = document.createElement("button")
-        const botaoCriar = document.createElement("button")
+    static listarVitrine(listaDeHabitos) {
+        this.tbody.innerHTML = '';
 
-        tituloEBotoes.classList.add("tituloEBotoes")
-        titulo.classList.add("titulo")
-        botaoTodos.classList.add("botaoTodos")
-        botaoConcluido.classList.add("botaoConcluido")
-        botaoCriar.classList.add("botaoCriar")
-
-        titulo.innerText = "Tarefas"
-        botaoTodos.innerText = "Todos"
-        botaoConcluido.innerText = "Concluídos"
-        botaoCriar.innerText = "Criar"
-
-        organizacaoBotoes.append(botaoTodos, botaoConcluido, botaoCriar)
-        tituloEBotoes.append(titulo, organizacaoBotoes)
-        body.appendChild(tituloEBotoes)
+        listaDeHabitos.forEach((habito) => {
+            UserPage.vitrine(habito.habit_status, habito.habit_title, habito.habit_description, habito.habit_category, habito.habit_id);
+        })
     }
 
-    static vitrine(statusP, atividadeP, descricaoP, categoriaP){
-        const body = document.querySelector("body")
-        const secaoTabela = document.createElement("section")
-        const tabela = document.createElement("table")
-        const tituloMain = document.createElement("thead")
-        const caixaOrganizacao = document.createElement("tr")
-        const status = document.createElement("th")
-        const tituloTabela = document.createElement("th")
-        const descricao = document.createElement("th")
-        const categoria = document.createElement("th")
-        const editar = document.createElement("th")
-
-        const tbody = document.createElement("tbody")
+    static vitrine(statusP, atividadeP, descricaoP, categoriaP, id){
         const caixaHabits = document.createElement("tr")
         const checkout = document.createElement("td")
         const input = document.createElement("input")
@@ -91,15 +40,6 @@ export default class UserPage extends Dom{
         const CaixaBotaoEditar = document.createElement("td")
         const editarHabito = document.createElement("button")
 
-        secaoTabela.classList.add("secaoTabela")
-        tabela.classList.add("tabela")
-        tituloMain.classList.add("tituloMain")
-        status.classList.add("status")
-        tituloTabela.classList.add("tituloTabela")
-        descricao.classList.add("descricao")
-        categoria.classList.add("categoria")
-        editar.classList.add("editar")
-
         caixaHabits.classList.add("caixaHabits")
         checkout.classList.add("checkout")
         input.classList.add("input")
@@ -109,19 +49,13 @@ export default class UserPage extends Dom{
         categoriaDetalhada.classList.add("categoriaDetalhada")
         CaixaBotaoEditar.classList.add("CaixaBotaoEditar")
         editarHabito.classList.add("editarHabito")
-
+   
+        caixaHabits.id = id
         input.type = "checkbox"
-        status.innerText = "Status"
-        tituloTabela.innerText = "Título"
-        descricao.innerText = "Descrição"
-        categoria.innerText = "Categoria"
-        editar.innerText = "Editar"
-        
-        checkout.type = "chechbox"
-        checkout.checked = statusP 
+        input.checked = statusP 
         atividadePlanejada.innerText = atividadeP
         descricapDetalhada.innerText = descricaoP
-        if(categoriaP === "Saude"){
+        if(categoriaP === "saude"){
             categoriaP = "Saúde"
         }
         categoriaDetalhada.innerText = categoriaP
@@ -131,15 +65,10 @@ export default class UserPage extends Dom{
         tdCategoria.appendChild(categoriaDetalhada)
         checkout.appendChild(input)
         caixaHabits.append(checkout, atividadePlanejada, descricapDetalhada, tdCategoria, CaixaBotaoEditar)
-        tbody.appendChild(caixaHabits)
-        caixaOrganizacao.append(status, tituloTabela, descricao, categoria, editar)
-        tituloMain.appendChild(caixaOrganizacao)
-        tabela.append(tituloMain, tbody)
-        secaoTabela.appendChild(tabela)
-        body.appendChild(secaoTabela)
+        this.tbody.appendChild(caixaHabits)
     }
 
-    static criarFormHabito(edicao) {
+    static criarFormHabito(eParaEditar) {
         const form = document.createElement('form');
 
         const habitoTitulo = document.createElement('input');
@@ -154,26 +83,26 @@ export default class UserPage extends Dom{
         habitoTitulo.type = 'text'
         habitoTitulo.name = 'habit_title';
         habitoTitulo.id = 'habit_title';
-        habitoTitulo.insertAdjacentHTML('beforebegin', `
+        habitoTitulo.insertAdjacentHTML('beforebegin',`
             <label for="habit_title">Título</label>
         `);
 
         habitoDescricao.name = 'habit_description';
         habitoDescricao.id = 'habit_description';
         habitoDescricao.insertAdjacentHTML('beforebegin', `
-        <label for="habit_description">Título</label>
+        <label for="habit_description">Descrição</label>
         `);
 
         habitoCategoria.classList.add('customSelect');
         habitoCategoria.insertAdjacentHTML('beforebegin', `
-            <label for="habit_category">Título</label>
+            <label for="habit_category">Categoria</label>
         `);
         habitoCategoria.insertAdjacentHTML('afterbegin', `
             <div class="customSelect__inner">
                 <button class="customSelect__select" name="habit_category" id="habit_category">Selecionar categoria</button>
                 <div class="customSelect__customOptions customOptions fechado">
                     <button class="customOptions__option customOptions__option--casa" value="casa">Casa</button>
-                    <button class="customOptions__option customOptions__option--estudo" value="estudo">Estudo</button>
+                    <button class="customOptions__option customOptions__option--estudo" value="estudos">Estudo</button>
                     <button class="customOptions__option customOptions__option--lazer" value="lazer">Lazer</button>
                     <button class="customOptions__option customOptions__option--trabalho" value="trabalho">Trabalho</button>
                     <button class="customOptions__option customOptions__option--saude" value="saude">Saúde</button>
@@ -181,26 +110,33 @@ export default class UserPage extends Dom{
             </div>
         `);
 
+        habitoBotoes.classList.add('botoesContainer')
         habitoBotoes.append(habitoBotaoEnvio);
         habitoBotaoEnvio.innerText = 'Inserir';
+        habitoBotaoEnvio.classList.add('botao', "botao--envio", "botao--envio/habito")
 
-        if(edicao) {
+        if(eParaEditar) {
             form.classList.add('formulario--editarHabito');
 
+            habitoBotaoEnvio.classList.add("botao--envio")
             habitoBotaoEnvio.innerText = 'Salvar alterações';
             habitoBotoes.insertAdjacentHTML('afterbegin', `
-                <button>Excluir</button>
+                <button class="botao botao--secundario botao--confirmarDelete">Excluir</button>
             `);
             habitoBotoes.insertAdjacentElement('beforebegin', habitoStatus)
 
+            habitoStatus.classList.add('statusForm')
             habitoStatus.insertAdjacentHTML('afterbegin', `
                 <label for="habit_status">Status</label>
-                <input type="checkbox" name="habit_status" id="habit_status">
+                <input class="input" type="checkbox" name="habit_status" id="habit_status">
             `);
 
             this.modal(form, 'Editar hábito');
         }
-        else this.modal(form, 'Criar hábito');
+        else {
+            form.classList.add('formulario--criarHabito');
+            this.modal(form, 'Criar hábito');
+        }
     }
 
     static editarUsuario(){
@@ -243,9 +179,11 @@ export default class UserPage extends Dom{
         const form = document.createElement('form');
         const botaoEnviar = document.createElement('button')
 
+        form.classList.add("formulario--editarPerfil")
+
         botaoEnviar.type = 'submit'
         botaoEnviar.innerText = 'Salvar Alterações'
-        botaoEnviar.classList.add('botao')
+        botaoEnviar.classList.add('botao', 'botao--envio', 'botao--envio/usuario')
 
         console.log(localStorage.getItem('@kenzie-habits:user_img'))
 
@@ -278,8 +216,30 @@ export default class UserPage extends Dom{
             novoInput.id = dado.name;
             novoInput.value = dado.value;
             
-            modalInner.append(form, botaoEnviar)
-            form.append(novoLabel, novoInput);
+            modalInner.append(form)
+            form.append(novoLabel, novoInput, botaoEnviar);
         });
+    }
+
+    static confirmarDeleteHabito() {
+        const deletarContainer = document.createElement('div');
+        const confirmacao = document.createElement('h3');
+        const detalhes = document.createElement('span');
+        const botoesContainer = document.createElement('div');
+
+        deletarContainer.classList.add('deletarContainer')
+        
+        confirmacao.innerText = 'Certeza que deseja excluir este hábito?';
+        detalhes.innerText = 'Após executar essa ação não será possível desfazer';
+
+        botoesContainer.classList.add('botoesContainer')
+        botoesContainer.insertAdjacentHTML('afterbegin', `
+            <button class="botao botao--secundario botao--cancelar">Cancelar</button>
+            <button class="botao botao--deletar">Sim, excluir este hábito</button>
+        `);
+
+        deletarContainer.append(confirmacao, detalhes, botoesContainer);
+
+        this.modal(deletarContainer, 'Excluir hábito');
     }
 }
