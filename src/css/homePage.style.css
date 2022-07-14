@@ -1,0 +1,409 @@
+:root{
+    --brand-1: #415AF3;
+    --brand-2: #D7E4FB;
+    --brand-3: #D7E4FB; 
+    --brand-4: black;
+    --grey-1: #212529;
+    --grey-2: #343A40;
+    --grey-3: #A1A1A1;
+    --grey-4: #E9ECEF; 
+    --white: white; 
+    --main-font: 'Inter', sans-serif;
+}
+
+.header{
+    width: 100%;
+}
+
+.headerUm{
+    max-width: 80%;
+    height: 58px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+
+.tituloSite{
+    font-family: var(--main-font);
+    font-size: 22px;
+    font-weight: bold;
+    color:  var(--brand-1);
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown:hover .dropdown_content{
+    display: block;
+}
+
+.dropdown_content{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    min-height: 50px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.editarPerfil{
+    width: 90px;
+    height: 32px;
+    font-family: var(--main-font);
+    background-color: var(--white);
+    color: var(--grey-1);
+    font-weight: bold;
+    border-radius: 4px;
+    border: none
+}
+
+.editarPerfil:hover{
+    background-color: var(--brand-1);
+    color: var(--grey-4);
+    transition: 144ms;
+}
+
+.sair{
+    width: 90px;
+    height: 32px;
+    font-family: var(--main-font);
+    background-color: var(--white);
+    color: var(--grey-1);
+    font-weight: bold;
+    border-radius: 4px;
+    border: none
+}
+
+.sair:hover{
+    background-color: var(--brand-1);
+    color: var(--grey-4);
+    transition: 144ms;
+}
+
+.fotoPerfilUm{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 2px solid var(--brand-1);
+}
+
+.headerDois{
+    width: 100%;
+    height: 150px;
+    background-color: var(--brand-1);
+    display: flex;
+}
+
+.headerDois > div{
+    max-width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 0 0 30px;
+}
+
+
+.fotoPerfilDois{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    border: 2px solid var(--grey-4);
+}
+
+.nomeUsuario{
+    font-family: var(--main-font);
+    font-size: 20px;
+    color:  var(--grey-4);
+    margin: 10px;
+} 
+
+.tituloEBotoes{
+    width: 100%;
+    height: 70px;
+    margin-top: 20px;
+}
+
+.titulo{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 80%;
+    font-size: 20px;
+    font-family: var(--main-font);
+    color: var(--brand-4);
+    font-weight: bold;
+    margin: auto;
+}
+
+.tituloEBotoes > div{
+    max-width: 88%;
+    margin: auto;
+}
+
+.botaoTodos{
+    width: 90px;
+    height: 32px;
+    font-family: var(--main-font);
+    background-color: var(--white);
+    color: var(--grey-1);
+    font-weight: bold;
+    border-radius: 4px;
+    border: none
+}
+
+.botaoTodos:hover{
+    background-color: var(--brand-1);
+    color: var(--grey-4);
+    transition: 144ms;
+}
+
+.botaoConcluido{
+    width: 90px;
+    height: 32px;
+    font-family: var(--main-font);
+    background-color: var(--white);
+    color: var(--grey-1);
+    font-weight: bold;
+    border-radius: 4px;
+    border: none
+}
+
+.botaoConcluido:hover{
+    background-color: var(--brand-1);
+    color: var(--grey-4);
+    transition: 144ms;
+}
+
+.botaoCriar{
+    width: 90px;
+    height: 32px;
+    font-family: var(--main-font);
+    background-color: var(--white);
+    color: var(--grey-1);
+    font-weight: bold;
+    border-radius: 4px;
+    border: none
+}
+
+.botaoCriar:hover{
+    background-color: var(--brand-1);
+    color: var(--grey-4);
+    transition: 144ms;
+}
+
+.secaoTabela{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.tabela{
+    width: 80%;
+    border: 1px solid var(--grey-3); 
+}
+
+.tituloMain{
+    width: 100vw;
+    height: 50px;
+    border-bottom: 1px solid var(--grey-3);
+}
+
+.status{
+    height: 50px;
+    font-family: var(--main-font);
+    font-size: 16px;
+    color: var(--grey-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tituloTabela{
+    height: 50px;
+    font-family: var(--main-font);
+    font-size: 16px;
+    color: var(--grey-3);
+    text-align: start;
+}
+
+.descricao{
+    height: 50px;
+    font-family: var(--main-font);
+    font-size: 16px;
+    color: var(--grey-3);
+    text-align: start;
+    display: none; 
+}
+
+.categoria{
+    height: 50px;
+    font-family: var(--main-font);
+    font-size: 16px;
+    color: var(--grey-3);
+    text-align: start;
+    display: none;
+}
+
+.editar{
+    height: 50px;
+    font-family: var(--main-font);
+    font-size: 16px;
+    color: var(--grey-3);
+}
+
+.caixaHabits{
+    width: 100vw;
+    height: 45px;
+    border-bottom: 1px solid var(--grey-3);
+}
+
+.checkout {
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input:checked{
+    background-color: #56CF8E;
+    transition: 144ms;
+}
+
+.atividadePlanejada{
+    font-size: 16px;
+    font-family: var(--main-font);
+    max-width: 20vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.descricapDetalhada{
+    font-size: 16px;
+    font-family: var(--main-font);
+    max-width: 20vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: none;
+}
+
+.tdCategoria{
+    display: none;
+}
+
+.categoriaDetalhada{
+    width: 83px;
+    height: 24px;
+    background-color: var(--brand-2);
+    color: var(--brand-1);
+    font-family: var(--main-font);
+    font-weight: bold;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    display: none;
+}
+
+.CaixaBotaoEditar{
+    display: flex;
+    justify-content: center;
+}
+
+.editarHabito{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 83px;
+    height: 24px;
+    background-color: var(--white);
+    color: var(--grey-3);
+    font-family: var(--main-font);
+    font-weight: bold;
+    font-size: 30px;
+    border: none;
+    border-radius: 4px;
+}
+
+.editarHabito:hover{
+    color: var(--grey-1);
+    transition: 144ms;
+}
+
+@media screen and (min-width: 870px){
+
+    .header{
+        width: 100%;
+    }
+
+    .headerUm{
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        max-width: 79%;
+    }
+
+    .headerDois{
+        width: 100%;
+    }
+
+    .headerDois div{
+        width: 80%;
+        display: flex;
+        justify-content: flex-start;
+        margin: auto;
+    }
+
+    .tituloEBotoes{
+        width: 80vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: auto;
+    }
+
+    .titulo{
+        display: flex;
+        justify-content: flex-start;
+        margin: 0;
+    }
+
+    .tituloEBotoes > div{
+        display: flex;
+        justify-content: flex-end;
+        margin: 0;
+    }
+
+    .descricao{
+        display: table-cell;
+    }
+
+    .categoria{
+        display: table-cell;    }
+
+    .tdCategoria{
+        display: table-cell;
+    }
+
+    .descricapDetalhada{
+        display: table-cell;
+    } 
+
+    .tdCategoria{
+        display: table-cell;
+    } 
+
+    .categoriaDetalhada{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+}

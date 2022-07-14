@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>formulario</title>
+</head>
+<body>
+    <div class="modal">
+        <div class="container">
+            <div class="modal__inner">
+                <div class="modal__cabecalho">
+                    <h2 class="modal__titulo">Editar Hábito</h2>
+                    <div class="modal__botaoFechar"></div>
+                </div>
+                <form>
+                    <label for="">Título</label>
+                    <input name="" id="" class="invalido"></input>
+                    <span class="invalido--mensagem">invalido</span>
+                    <label for="">Título</label>
+                    <textarea name="" id="" class="invalido"></textarea>
+                    <span class="invalido--mensagem">invalido</span>
+                    <label for="">Cateoria</label>
+                    <div class="customSelect">
+                        <div class="customSelect__inner">
+                            <button class="customSelect__select invalido customOptions__option customOptions__option--casa" value="casa">Selecionar categoria</button>
+                            <span class="invalido--mensagem">invalido</span>
+                            <div class="customSelect__customOptions customOptions">
+                                <button class="customOptions__option customOptions__option--casa" value="casa">Casa</button>
+                                <button class="customOptions__option customOptions__option--estudo" value="estudo">Estudo</button>
+                                <button class="customOptions__option customOptions__option--lazer" value="lazer">Lazer</button>
+                                <button class="customOptions__option customOptions__option--trabalho" value="trabalho">Trabalho</button>
+                                <button class="customOptions__option customOptions__option--saude" value="saude">Saúde</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status">
+                        <label for="">Status</label>
+                        <input type="checkbox">
+                    </div>
+                    
+                    <button class="botao">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
