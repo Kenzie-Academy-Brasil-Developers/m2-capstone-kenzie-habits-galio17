@@ -140,40 +140,6 @@ export default class UserPage extends Dom{
     }
 
     static editarUsuario(){
-        
-        // criação de modal
-        const title = "Editar perfil"
-        const body = document.querySelector("body")
-        const modal = document.createElement("div")
-        const container = document.createElement("div")
-        const modalInner = document.createElement("div")
-        const modalCabecalho = document.createElement('div')
-        const modalTitulo = document.createElement("h2")
-        const botaoFechar = document.createElement("button")
-        const figure = document.createElement("figure")
-        const imagem = document.createElement("img")
-        modalTitulo.innerText = title
-        modal.classList.add("modal", "modal__habito")
-        container.classList.add("container")
-        modalInner.classList.add("modal__inner")
-        modalTitulo.classList.add("modal__titulo")
-        botaoFechar.classList.add("modal__botaoFechar")
-        modalCabecalho.classList.add("modal__cabecalho")
-
-        botaoFechar.type = "button"
-
-        figure.appendChild(imagem)
-        botaoFechar.appendChild(figure)
-        modalInner.append(modalCabecalho)
-        modalCabecalho.append(modalTitulo, botaoFechar)
-        container.append(modalInner)
-        modal.appendChild(container)
-        body.appendChild(modal)
-
-        botaoFechar.addEventListener("click", () => {
-            modal.style.display = "none"
-        })
-
         // criação de form
 
         const form = document.createElement('form');
@@ -184,8 +150,6 @@ export default class UserPage extends Dom{
         botaoEnviar.type = 'submit'
         botaoEnviar.innerText = 'Salvar Alterações'
         botaoEnviar.classList.add('botao', 'botao--envio', 'botao--envio/usuario')
-
-        console.log(localStorage.getItem('@kenzie-habits:user_img'))
 
         const inputDados = [
             {
@@ -216,9 +180,10 @@ export default class UserPage extends Dom{
             novoInput.id = dado.name;
             novoInput.value = dado.value;
             
-            modalInner.append(form)
             form.append(novoLabel, novoInput, botaoEnviar);
         });
+
+        this.modal(form, 'Editar Perfil')
     }
 
     static confirmarDeleteHabito() {
