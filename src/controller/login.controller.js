@@ -14,16 +14,20 @@ class Login {
             this.statusRequisicao = res.status
             return res.json()})
         .then((response) => {
+
+            if(response.token){
+
             localStorage.setItem('@kenzie-habits:user_name', response.response.usr_name)
             localStorage.setItem('@kenzie-habits:user_email', response.response.usr_email)
             localStorage.setItem('@kenzie-habits:user_img', response.response.usr_image)
             localStorage.setItem('@kenzie-habits:token', response.token)
+            
+            }
             return response
         })
 
         .catch(err => console.log(err))
     }
-
 }
 
 

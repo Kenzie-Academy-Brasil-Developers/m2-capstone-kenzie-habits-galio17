@@ -1,6 +1,13 @@
-import Dom from "../models/dom.model.js";
+import UserPage from "../controller/userPage.controller.js";
 
-let form = Dom.createForm("Enviar", [
+// teste UserPage
+UserPage.header("Júlia Silva Camargo")
+UserPage.menu()
+UserPage.vitrine(true, "fazer exercicios", "ir correr na...", "Saude")
+UserPage.vitrine()
+/* 
+// modelo de parametros formulário
+let form = UserPage.createForm("Enviar", [
     {
     label: "Senha",
     name: "password",
@@ -8,6 +15,14 @@ let form = Dom.createForm("Enviar", [
     placeholder: "Place",
     }
 ])
+
 let elemento = document.createElement("h1")
 elemento.innerText = "Oi"
+
+// teste Dom.modal
+UserPage.modal(form, "Criar Hábito"); */
+
+UserPage.criarFormHabito(true)
 Dom.modal(form, "Criar Hábito")
+
+
