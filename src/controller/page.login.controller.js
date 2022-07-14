@@ -76,7 +76,7 @@ export default class PaginaLogin extends Dom {
             }
             else{
                 this.modal('Usuário logado', 'Sucesso', true)
-                setInterval(() => {
+                setTimeout(() => {
                     window.location.replace("../src/views/homePage.html")
                 }, 3000);
             }
