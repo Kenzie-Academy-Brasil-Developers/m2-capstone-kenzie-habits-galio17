@@ -210,4 +210,22 @@ export default class UserPage extends Dom{
             form.append(novoLabel, novoInput);
         });
     }
+
+    static confirmarDeleteHabito() {
+        const deletarContainer = document.createElement('div');
+        const confirmacao = document.createElement('h3');
+        const detalhes = document.createElement('span');
+        const botoesContainer = document.createElement('div');
+
+        confirmacao.innerText = 'Certeza que deseja excluir este hábito?';
+        detalhes.innerText = 'Após executar essa ação não será possível desfazer';
+        botoesContainer.insertAdjacentHTML('afterbegin', `
+            <button class="botao botao--secundario botao--cancelar">Cancelar</button>
+            <button class="botao botao--deletar">Sim, excluir este hábito</button>
+        `);
+
+        deletarContainer.append(confirmacao, detalhes, botoesContainer);
+
+        this.modal(deletarContainer, 'Excluir hábito');
+    }
 }
