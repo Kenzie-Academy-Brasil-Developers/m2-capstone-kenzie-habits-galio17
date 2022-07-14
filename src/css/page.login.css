@@ -55,6 +55,7 @@ aside{
 }
 
 .tituloLogin{
+    -o-animation-direction: alternate-reverse;
     color: var(--grey-5);
     display: flex;
     justify-content: center;
@@ -99,14 +100,14 @@ input::before{
     border: solid 50px var(--sucess);
 }
 
-div{
+.divErro{
     animation-timing-function: ease;
     color: var(--error-2);
     font-size: 12px;
     font-weight: var(--text-4-500);
 }
 
-button{
+.botaoLogin{
     background-color: var(--color-button-mobile);
     color: var(--grey-5);
     display: flex;
@@ -120,6 +121,57 @@ button{
     font-size: var(--title-5);
     line-height: 19px;
     
+}
+
+.xsairUsuario{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 14px;
+    height: 14px;
+
+    color: var(--grey-5);
+    border: solid 2px var(--error-1);
+    border-radius: 55%;
+    font-size: 12px;
+    background-color: var(--error-1);
+    
+}
+
+
+.xsairSenha{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    width: 14px;
+    height: 14px;
+    color: var(--grey-5);
+    border: solid 2px var(--error-1);
+    border-radius: 50%;
+    font-size: 12px;
+    background-color: var(--error-1);
+}
+
+
+.sairBotaoUsuario{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+   
+}
+
+.sairBotaoSenha{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+   
 }
 
 
@@ -146,7 +198,7 @@ button{
     }
 
 
-    button{
+    .botaoLogin{
         font-weight: 600;
         font-size: var(--title-4);
         line-height: 20px;
@@ -172,7 +224,7 @@ button{
         margin: 10px;
     }
     
-    button{
+    .botaoLogin{
         font-family: var(--title-2);
         font-weight: var(--text-2-500);
         font-size: var(--title-3);
@@ -180,13 +232,14 @@ button{
         
     }
 
-    .div{
-        font-size: var(--title-2);
+    .divErro{
+        font-size: var(--title-5)
     }
 }
 
 
 @media (min-width: 1023px){
+
     .container{
         height: inherit;
     }
@@ -235,14 +288,14 @@ button{
         margin: 20px 50px;
     }
 
-    .div{
+    .divErro{
         display: flex;
+        font-size: 12px;
         justify-content: center;
         align-items: center;
-        margin-top: 12px;
-        margin-left: 53px;
+        margin-top: 8px;
+        margin-left: 6px;
         min-height: 20px;
-        width: 67.6%;
     }
 
     .container{
@@ -258,7 +311,7 @@ button{
         font-weight: var(--text-4-500);
         font-size: 28px;
         font-style: normal;
-        margin: 0 50px;
+        margin: 20px 50px;
         color: var(--grey-1);
     }
 
@@ -286,7 +339,8 @@ button{
 
     }
 
-    button{
+
+    .botaoLogin{
 
         background-color: var(--button-input);
         width: 340px;
@@ -298,17 +352,72 @@ button{
         line-height: 14px;
         margin: 0px 0px;
         padding: 12px;
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
-    button:focus{
+    .botaoLogin{
+        animation-timing-function: alter;
+    }
+
+
+    .botaoLogin:focus{
+        background-color: var(--button-input);
+    }
+
+    .botaoLogin:hover{
         background-color: var(--color-button-mobile);
     }
 
-    button:hover{
-        background-color: var(--color-button-mobile);
+
+    .xsairUsuario{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 14px;
+        height: 14px;
+
+        color: var(--error-1);
+        border: solid 2px var(--error-1);
+        border-radius: 55%;
+        font-size: 12px;
+        background-color: var(--grey-5);
+        
     }
 
+    .xsairSenha{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        width: 14px;
+        height: 14px;
+        color: var(--error-1);
+        border: solid 2px var(--error-1);
+        border-radius: 50%;
+        font-size: 12px;
+        background-color: var(--grey-5);
+    }
+
+
+    .sairBotaoUsuario{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+       
+    }
+
+    .sairBotaoSenha{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+       
+    }
 
 }
 
