@@ -1,6 +1,8 @@
 import { Habits } from "../controller/habits.controller.js";
 import { Login } from "../controller/login.controller.js";
 import { User } from "../controller/user.controller.js";
+import Dom from "../models/dom.model.js";
+
 
 const dataLogin = {
     email: "rafaelBertoldo@mail.com",
@@ -57,3 +59,6 @@ Login.logar(dataLogin)
 
 // // Atualizar profile:
 // User.updateProfile(userUpdate)
+
+
+Dom.modal(undefined, "teste", true)
