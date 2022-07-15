@@ -27,15 +27,24 @@ class HomePage{
     static selectForm(e){
         e.preventDefault();
         const option = e.target;
+        const categorias = document.querySelector('.customOptions');
         if(option.classList.contains("customOptions__option")){
-            const customSelect = e.composedPath()[4].querySelector(".customSelect__select")
+            const customSelect = e.composedPath()[4].querySelector(".select")
+
             if(customSelect.classList.contains("customOptions__option")){
-                customSelect.className = "customSelect__select"
+                customSelect.className = "select"
+                customSelect.innerText = 'Selecionar categoria';
             }
+            categorias.classList.toggle('fechado')
             customSelect.classList.add(...option.classList)
             customSelect.value = option.value;
             customSelect.innerText = option.innerText;
-            // console.dir(option)
+        }
+        else if(option.classList.contains('customSelect__select')
+        || option.classList.contains('select')) {
+            categorias.classList.toggle('fechado')
+        } else {
+            if(categorias) categorias.classList.add('fechado')
         }
         
     }
@@ -71,13 +80,20 @@ class HomePage{
                 alert(user.message)
                 
             } else {
+                UserPage.modal('Usuário atualizado', 'Sucesso', true);
                 
                 localStorage.setItem("@kenzie-habits:user_name", user.usr_name)
                 localStorage.setItem("@kenzie-habits:user_img", user.usr_image)
-
+                
                 UserPage.header()
-
+                
                 modal.remove()
+
+                setTimeout(() => {
+                    const modalSucesso = document.querySelector('.modal--sucesso')
+
+                    if(modalSucesso) modalSucesso.remove()
+                }, 3000);
             }
         }
     }
@@ -113,10 +129,17 @@ class HomePage{
             if(habito.message){
                 alert(habito.message)
             } else {
+                UserPage.modal('Hábito salvo', 'Sucesso', true)
 
                 listaDeHabitos = await Habits.ReadAll()
 
                 UserPage.listarVitrine(listaDeHabitos)
+
+                setTimeout(() => {
+                    const modalSucesso = document.querySelector('.modal--sucesso')
+
+                    if(modalSucesso) modalSucesso.remove()
+                }, 3000);
 
                 modal.remove()
             }
@@ -127,7 +150,12 @@ class HomePage{
         const botao = e.target;
         if(botao.classList.contains("editarHabito")){
             UserPage.criarFormHabito(true)
+            console.log(e.composedPath())
             this.habitoId = e.composedPath()[2].id
+            const habito = document.querySelector('#habit_title')
+            habito.value = e.composedPath()[2].habit
+            const descricao = document.querySelector('#habit_description')
+            descricao.value = e.composedPath()[2].descricao
         }
     }
 
@@ -150,10 +178,16 @@ class HomePage{
         if(checkbox.classList.contains('input')) {
             if(e.composedPath()[1].className === 'checkout') this.habitoId = e.composedPath()[2].id
             const habito = await Habits.CompleteHabit(this.habitoId)
-            alert(habito.message);
+            UserPage.modal(habito.message, 'Sucesso', true);
             checkbox.checked = true
             listaDeHabitos = await Habits.ReadAll()
             UserPage.listarVitrine(listaDeHabitos)
+
+            setTimeout(() => {
+                const modalSucesso = document.querySelector('.modal--sucesso')
+
+                if(modalSucesso) modalSucesso.remove()
+            }, 3000);
         }
     }
 
@@ -177,10 +211,16 @@ class HomePage{
         if(botaoDeletar.classList.contains('botao--deletar')){
             e.composedPath()[5].remove()
             const habito = await Habits.DeleteHabit(this.habitoId);
-            alert(habito.message)
+            UserPage.modal(habito.message, 'Sucesso', true)
 
             listaDeHabitos = await Habits.ReadAll()
             UserPage.listarVitrine(listaDeHabitos);
+
+            setTimeout(() => {
+                const modalSucesso = document.querySelector('.modal--sucesso')
+
+                if(modalSucesso) modalSucesso.remove()
+            }, 3000);
         }
     }
 

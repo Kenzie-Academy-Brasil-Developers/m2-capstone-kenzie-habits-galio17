@@ -1,5 +1,7 @@
 import { Login } from "./login.controller.js"
-export default class PaginaLogin {
+import Dom from "../models/dom.model.js"
+
+export default class PaginaLogin extends Dom {
     static login() {
 
         const botaoLogin = document.createElement("button")
@@ -73,7 +75,10 @@ export default class PaginaLogin {
 
             }
             else{
-                window.location.replace("../src/views/homePage.html")
+                this.modal('Usuário logado', 'Sucesso', true)
+                setTimeout(() => {
+                    window.location.replace("../src/views/homePage.html")
+                }, 3000);
             }
         })
 
