@@ -2,6 +2,9 @@ import Dom from "../models/dom.model.js"
 
 export default class UserPage extends Dom{
     static tbody = document.querySelector(".tbody")
+    static descricaoP
+    static atividadeP
+    static habitoCategoria
 
     static header(){
         let username = localStorage.getItem("@kenzie-habits:user_name")
@@ -51,6 +54,10 @@ export default class UserPage extends Dom{
         editarHabito.classList.add("editarHabito")
    
         caixaHabits.id = id
+        caixaHabits.habit = atividadeP
+        caixaHabits.descricao = descricaoP
+        caixaHabits.categoria = categoriaP
+        caixaHabits.status = statusP
         input.type = "checkbox"
         input.checked = statusP 
         atividadePlanejada.innerText = atividadeP
@@ -83,14 +90,12 @@ export default class UserPage extends Dom{
         habitoTitulo.type = 'text'
         habitoTitulo.name = 'habit_title';
         habitoTitulo.id = 'habit_title';
-        habitoTitulo.minLength = 1;
         habitoTitulo.insertAdjacentHTML('beforebegin',`
             <label for="habit_title">Título</label>
         `);
 
         habitoDescricao.name = 'habit_description';
         habitoDescricao.id = 'habit_description';
-        habitoDescricao.minLength = 1;
         habitoDescricao.insertAdjacentHTML('beforebegin', `
         <label for="habit_description">Descrição</label>
         `);

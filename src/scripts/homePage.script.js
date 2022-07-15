@@ -77,6 +77,7 @@ class HomePage{
             let user = await User.updateProfile(usuarioEditado);
 
             if(user.message){
+                alert(user.message)
                 
             } else {
                 UserPage.modal('Usuário atualizado', 'Sucesso', true);
@@ -126,7 +127,7 @@ class HomePage{
             }
 
             if(habito.message){
-    
+                alert(habito.message)
             } else {
                 UserPage.modal('Hábito salvo', 'Sucesso', true)
 
@@ -149,7 +150,12 @@ class HomePage{
         const botao = e.target;
         if(botao.classList.contains("editarHabito")){
             UserPage.criarFormHabito(true)
+            console.log(e.composedPath())
             this.habitoId = e.composedPath()[2].id
+            const habito = document.querySelector('#habit_title')
+            habito.value = e.composedPath()[2].habit
+            const descricao = document.querySelector('#habit_description')
+            descricao.value = e.composedPath()[2].descricao
         }
     }
 
